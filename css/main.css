@@ -1,0 +1,96 @@
+body{
+    height: 100vh;
+    background: #003F61;
+    background: linear-gradient(180deg, rgba(0, 63, 97, 1) 0%, rgba(0, 159, 150, 1) 50%, rgba(0, 159, 150, 1) 100%);
+    margin: 4em 1.5em;
+    font-family: Inter;
+}
+
+#menu{
+    padding: 0.25em 1.2em;
+}
+
+.calendar {
+    width: 320px;
+    background: linear-gradient(to bottom right, #d0edf8, #b0dff0);
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 15px;
+    margin: 0 auto;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .calendar-header button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .month-year {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .calendar-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .day-names, .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+  }
+  
+  .day-names div {
+    font-weight: bold;
+    padding: 5px 0;
+  }
+  
+  .days div {
+    padding: 10px 0;
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+  
+  .sunday .today{
+    background: #2D6F92;
+    color: white;
+  }
+
+  .days div.today{
+    background: #2D6F92;
+    color: white;
+  }
+  
+  .days div.sunday {
+    color: red;
+  }
+  
+  .days div.greyed {
+    color: #bbb;
+  }
+  
+  .days div.highlight {
+    position: relative;
+  }
+  
+  .days div.highlight::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
