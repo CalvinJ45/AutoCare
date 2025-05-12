@@ -1,0 +1,382 @@
+Ferrari,812 Superfast
+Ferrari,F8 Tributo
+Ferrari,Roma
+Ferrari,Portofino M
+Ferrari,SF90 Stradale
+Ferrari,488 Pista
+Ferrari,GTC4Lusso
+Ferrari,488 GTB
+Ferrari,California T
+Ferrari,LaFerrari
+Mahindra,XUV300
+Mahindra,Scorpio
+Mahindra,Thar
+Mahindra,Bolero
+Mahindra,Marazzo
+Mahindra,Alturas G4
+Toyota,Camry
+Toyota,Corolla
+Toyota,RAV4
+Toyota,Highlander
+Toyota,4Runner
+Toyota,Tacoma
+Toyota,Tundra
+Ford,Mustang
+Ford,F-150
+Ford,Explorer
+Ford,Escape
+Ford,Edge
+Ford,Ranger
+Ford,Bronco Sport
+Chevrolet,Camaro
+Chevrolet,Corvette
+Chevrolet,Spark
+Chevrolet,Bolt EV
+Chevrolet,Equinox
+Chevrolet,Suburban
+Chevrolet,Tahoe
+Chevrolet,Silverado 1500
+Chevrolet,Colorado
+Chevrolet,Silverado HD (2500/3500)
+Nissan,Altima
+Nissan,Maxima
+Nissan,Sentra
+Nissan,Versa
+Nissan,Rogue
+Nissan,Murano
+Nissan,Pathfinder
+Nissan,Armada
+Nissan,GT-R
+BMW,X1 sDrive28i
+BMW,X3 xDrive30i
+BMW,X5 xDrive40i
+BMW,330i Sedan
+BMW,530i Sedan
+BMW,740i Sedan
+BMW,M4 Coupe
+BMW,M8 Convertible
+Mercedes-Benz,C-Class
+Mercedes-Benz,E-Class
+Mercedes-Benz,S-Class
+Mercedes-Benz,G-Class
+Mercedes-Benz,GLC-Class
+Audi,A3
+Audi,A4
+Audi,A5
+Audi,Q3
+Audi,Q5
+Audi,Q7
+Volkswagen,Golf
+Volkswagen,Jetta
+Volkswagen,Passat
+Volkswagen,Atlas
+Volkswagen,Tiguan
+Porsche,718 Boxster
+Porsche,718 Cayman
+Porsche,911
+Porsche,Panamera
+Porsche,Cayenne
+Porsche,Macan
+Rolls-Royce,Ghost
+Rolls-Royce,Wraith
+Rolls-Royce,Dawn
+Rolls-Royce,Phantom
+Rolls-Royce,Cullinan
+McLaren,540C
+McLaren,570S
+McLaren,570GT
+McLaren,600LT
+McLaren,720S
+McLaren,Artura
+Lexus,ES
+Lexus,IS
+Lexus,GS
+Lexus,LS
+Lexus,UX
+Lexus,NX
+Lexus,RX
+Lexus,GX
+Lexus,LX
+Hyundai,Elantra
+Hyundai,Sonata
+Hyundai,Tucson
+Hyundai,Santa Fe
+Hyundai,Kona
+Hyundai,Accent
+Hyundai,Palisade
+Kia,Forte
+Kia,Optima
+Kia,Stinger
+Kia,Sorento
+Kia,Soul
+Kia,Telluride
+Mazda,MX-5
+Mazda,Mazda3
+Mazda,Mazda6
+Mazda,CX-3
+Mazda,CX-5
+Mazda,CX-9
+Subaru,Ascent
+Subaru,Impreza
+Subaru,Legacy
+Subaru,Outback
+Subaru,BRZ
+Subaru,WRX
+Subaru,Crosstrek
+Subaru,Crosstrek Hybrid
+Mitsubishi,Outlander
+Mitsubishi,Eclipse Cross
+Mitsubishi,Mirage
+Mitsubishi,Mirage G4
+Mitsubishi,Outlander Sport
+Tesla,Model S
+Tesla,Model 3
+Tesla,Model X
+Tesla,Model Y
+Dodge,Challenger
+Dodge,Charger
+Dodge,Durango
+Dodge,Journey
+Dodge,RAM 1500
+Dodge,RAM 2500
+Dodge,RAM 3500
+Ram,1500
+Ram,2500
+Ram,3500
+Ram,TRX
+Volvo,XC40
+Volvo,XC60
+Volvo,XC90
+Volvo,S60
+Volvo,V60
+Volvo,C40 Recharge
+Volvo,XC40 Recharge
+Volvo,Polestar 2
+Land Rover,Defender
+Land Rover,Discovery
+Land Rover,Discovery Sport
+Land Rover,Range Rover
+Land Rover,Range Rover Evoque
+Land Rover,Range Rover Sport
+Jaguar,I-PACE
+Jaguar,F-PACE
+Jaguar,F-TYPE
+Jaguar,XE
+Jaguar,XF
+Fiat,500
+Fiat,500X
+Fiat,124 Spider
+Alfa Romeo,Giulia
+Alfa Romeo,Giulia Quadrifoglio
+Alfa Romeo,Stelvio
+Alfa Romeo,Stelvio Quadrifoglio
+Peugeot,208
+Peugeot,2008
+Peugeot,308
+Peugeot,3008
+Peugeot,508
+Peugeot,5008
+Citroën,C1
+Citroën,C3
+Citroën,C3 Aircross
+Citroën,C4
+Citroën,C5 Aircross
+Renault,Arkana
+Renault,Captur
+Renault,Clio
+Renault,Megane
+Renault,Zoe
+Skoda,Fabia
+Skoda,Scala
+Skoda,Octavia
+Skoda,Superb
+Skoda,Karoq
+Skoda,Kodiaq
+Skoda,Enyaq iV
+SEAT,Arona
+SEAT,Ibiza
+SEAT,Leon
+SEAT,Leon Sportstourer
+SEAT,Tarraco
+SEAT,Mii
+SEAT,Born
+Opel/Vauxhall,Adam
+Opel/Vauxhall,Corsa
+Opel/Vauxhall,Astra
+Opel/Vauxhall,Insignia
+Opel/Vauxhall,Mokka
+Opel/Vauxhall,Grandland
+Opel/Vauxhall,Crossland
+Opel/Vauxhall,Combo
+Opel/Vauxhall,Vivaro
+Opel/Vauxhall,Movano
+Mini,Cooper
+Mini,Cooper S
+Mini,John Cooper Works
+Mini,Cooper SE
+Mini,Countryman
+Mini,Clubman
+Mini,Paceman
+Mini,Countryman John Cooper Works
+Saab,9-5
+Saab,9-3
+Saab,9-3 Convertible
+Saab,9-5 SportCombi
+Dodge,Grand Caravan
+Dodge,Challenger SRT Demon
+Dodge,Viper
+Bugatti,Chiron
+Bugatti,Veyron
+Bugatti,EB 110
+Bugatti,EB 110 SS
+Maserati,Ghibli
+Maserati,Quattroporte
+Maserati,Levante
+Maserati,GranTurismo
+Lancia,Stratos HF
+Lancia,Delta Integrale
+Lancia,Thema 8.32
+Lancia,Aurelia B24
+Lancia,Fulvia
+Pagani,Huayra
+Pagani,Zonda
+Pagani,Huayra BC
+Pagani,Huayra R
+Pagani,Huayra Imola
+Koenigsegg,Gemera
+Koenigsegg,Jesko
+Koenigsegg,Regera
+Koenigsegg,Agera RS
+Koenigsegg,One:1
+Koenigsegg,Agera S
+Koenigsegg,Agera R
+Koenigsegg,CCXR Trevita
+Koenigsegg,CCX
+Koenigsegg,CCXR
+Koenigsegg,CC
+Koenigsegg,CC8S
+Genesis,G70
+Genesis,G80
+Genesis,GV70
+Genesis,GV80
+Genesis,GV90
+Polestar,Polestar 1
+Polestar,Polestar 2
+Polestar,Polestar 3
+Lucid Motors,Lucid Air
+Lucid Motors,Lucid Air Dream Edition Performance
+Rivian,R1T
+Rivian,R1S
+Faraday Future,FF 91
+Alpina,B3
+Alpina,B4
+Alpina,B5
+Alpina,B7
+Alpina,XB7
+Cadillac,CT4
+Cadillac,CT4-V
+Cadillac,CT5
+Cadillac,CT5-V
+Cadillac,CT5-V Blackwing
+Cadillac,Escalade
+Cadillac,XT4
+Cadillac,XT5
+Cadillac,XT6
+Caterham,Seven 170
+Caterham,Seven 270
+Caterham,Seven 360
+Caterham,Seven 420
+Caterham,Seven 620
+Chrysler,300
+Chrysler,Pacifica
+Chrysler,Voyager
+Chrysler,Pacifica Hybrid
+Fisker,Ocean
+Fisker,Pear
+Infiniti,QX50
+Infiniti,QX60
+Infiniti,QX80
+Infiniti,Q50
+Infiniti,Q60
+Infiniti,QX70
+Infiniti,QX70 Hybrid
+Isuzu,Ascender
+Isuzu,D-Max
+Isuzu,MU-X
+Isuzu,NPR
+Isuzu,NQR
+Isuzu,FTR
+Lotus,Emira
+Lotus,Elise
+Lotus,Exige
+Lotus,Evija
+Morgan,Aero 8
+Morgan,Plus 4
+Morgan,Plus 6
+Morgan,Roadster
+Morgan,Super 3
+Smart,Fortwo
+Smart,Forfour
+Suzuki,Across
+Suzuki,Baleno
+Suzuki,Celerio
+Suzuki,Ciaz
+Suzuki,Jimny
+Suzuki,S-Cross
+Suzuki,Swift
+Suzuki,Vitara
+Suzuki,XL7
+Vauxhall,Corsa
+Vauxhall,Crossland
+Vauxhall,Grandland
+Vauxhall,Insignia
+Vauxhall,Mokka
+Vauxhall,Vivaro
+Vauxhall,Combo-Life
+Zagato,Aston Martin DB4 GT Zagato
+Zagato,Aston Martin V12 Zagato
+Zagato,Alfa Romeo TZ3 Stradale
+Zagato,Bentley Flying Spur Zagato
+Zagato,Fiat 124 Spider Zagato
+Zagato,Jaguar C-Type
+Wiesmann,MF5
+Wiesmann,GT MF4
+Wiesmann,Roadster MF4
+Lamborghini,Aventador
+Lamborghini,Huracan
+Lamborghini,Urus
+Lamborghini,Sian
+Lamborghini,Countach
+Lamborghini,Diablo
+Lamborghini,Murciélago
+Lamborghini,Gallardo
+Lamborghini,Espada
+Lamborghini,Miura
+Toyota,Prius
+Toyota,Mirai
+Toyota,GR Supra
+Toyota,86
+Suzuki,Alto
+Suzuki,Ertiga
+Honda,Accord
+Honda,Civic
+Honda,CR-V
+Honda,HR-V
+Honda,Odyssey
+Honda,Pilot
+Honda,Insight
+Honda,NSX
+Honda,S2000
+Chevrolet,Cruze
+Chevrolet,Silverado 2500HD
+Chevrolet,Trax
+Chevrolet,Trailblazer
+Renault,Koleos
+Tata Motors,Punch
+Tata Motors,Nexon
+Tata Motors,Harrier
+Tata Motors,Safari
+Tata Motors,Altroz
+Tata Motors,Tiago
+Tata Motors,Tigor
+Tata Motors,Thar

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page - AutoCare</title>
+    <link rel="stylesheet" href="css/register_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="background-section">
+        <img src="/assets/logo-vert.png" alt="" class="logo">
+    </section>
+    <div class="background-blur"></div>
+    <section class="box-section">
+
+        <form class="registerForm" id="registerForm">
+            <div class="input-container">
+                <img src="/assets/user.png" alt="">
+                <input type="username" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-container">
+                <img src="/assets/envelope.png" alt="">
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-container">
+                <img src="/assets/show.png" alt="" id="show-password">
+                <input type="password" id="password" placeholder="Password" required />
+            </div>
+            <div class="input-container">
+                <img src="/assets/phone.png" alt="">
+                <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required>
+            </div>
+            <button type="submit">SIGN UP</button>
+            
+            <p class="register-text">Already have an account?</p>
+        </form>
+        <a href="login.html">
+            <p class="register-link">Sign In Here!</p>
+        </a>
+    </section>
+
+    <div id="notification-box" class="notif hidden">
+        <div class="notification-content">
+            <p class="start-text">Registration Successful!</p>
+            <p id="success-message"></p>
+            <button id="nextButton">Next</button>
+        </div>
+    </div>
+
+    <script type="module" src="register.js"></script>
+</body>
+</html>

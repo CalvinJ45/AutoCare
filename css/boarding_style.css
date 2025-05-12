@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #000;
+}
+  
+  /* Onboarding screen */
+.boarding-screen {
+  width: 430px;
+  height: 932px;
+  margin: 0;
+  background: linear-gradient(to bottom, #004e92, #00c7a3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px 10px 0 10px;
+}
+  
+.content {
+  width: 370px;
+  text-align: left;
+  margin-top: 10px; /* bigger gap from the top */
+}
+  
+.welcome {
+  font-size: 24px;
+  margin: 0;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 700;
+  margin: 0;
+}
+  
+.subtitle {
+  font-size: 30px;
+  margin-bottom: 50px;
+  line-height: 1.4;
+}
+  
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+  
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+}
+  
+.feature p {
+  font-size: 16px;
+  margin: 0;
+}
+  
+.icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+  
+/* Call to action block at the bottom */
+.cta-container {
+  width: 90%;
+  text-align: center;
+  margin-bottom: 180px;
+}
+  
+.get-started {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+  
+.start-button {
+  width: 70%;
+  padding: 18px;
+  background-color: white;
+  color: #004e92;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+  
+.start-button:hover {
+  background-color: #f0f0f0;
+}
+  

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page - AutoCare</title>
+    <link rel="stylesheet" href="css/login_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="background-section">
+        <img src="/assets/logo-vert.png" alt="" class="logo">
+    </section>
+    <div class="background-blur"></div>
+    <section class="box-section">
+        <form class="login-form" id="loginForm">
+            <div class="input-container">
+                <img src="/assets/user.png" alt="">
+                <input type="text" class="username" id="username" placeholder="Username" required />
+            </div>
+
+            <div class="space"></div>
+
+            <div class="input-container">
+                <img src="/assets/show.png" alt="" id="show-password">
+                <input type="password" class="password" id="password" placeholder="Password" required />
+            </div>
+
+            <a href="">
+                <p class="forgot-password">Forgot Password?</p>
+            </a>
+            <button type="submit">SIGN IN</button>
+
+            <div class="divider">
+                <hr/>
+                    <span>OR</span>
+                <hr/>
+            </div>
+
+            <p class="continue-text">Continue With</p>
+
+            <div class="login-apps">
+                <div class="login-icons">
+                    <img src="/assets/apple-logo.png" alt="Apple Sign-In">
+                </div>
+                <div class="login-icons">
+                    <img src="/assets/google-logo.png" alt="Google Sign-In">
+                </div>
+                <div class="login-icons">
+                    <img src="/assets/facebook-logo.png" alt="Facebook Sign-In">
+                </div>
+            </div>
+
+            <p class="signup-text">Don't have account yet?</p>
+
+            <a href="register.html">
+                <p class="signup-link">Sign Up Here!</p>
+            </a>
+        </form>
+    </section>
+    <script type="module" src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto Care - Add Vehicle</title>
+  <link rel="stylesheet" href="css/add_vehicle_style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="home.html">
+        <img src="assets/back-button.png" alt="" class="back-arrow">
+      </a>
+      <h2>Add Vehicle</h2>
+      <button id="save-button">Save</button>
+    </div>
+
+    <div class="form-group">
+      <label>Vechicle Brand</label>
+      <div class="input-wrapper">
+        <input id="brandInput" type="text" placeholder="Ex: Toyota" autocomplete="off" />
+        <div id="autocomplete" class="autocomplete"></div>
+      </div>
+
+      <label>Type</label>
+      <div class="input-wrapper">
+        <input id="typeInput" type="text" placeholder="Ex: Jeep" autocomplete="off" />
+        <div id="autocomplete3" class="autocomplete"></div>
+      </div>
+      
+      <label>Model</label>
+      <div class="input-wrapper">
+        <input id="modelInput" type="text" placeholder="Ex: Highlander" autocomplete="off" />
+        <div id="autocomplete2" class="autocomplete"></div>
+      </div>
+
+      <div class="flex-group">
+        <div class="field">
+          <label>Year</label>
+          <input type="number" id="year-manufactured" autocomplete="off" min="1900" max="2030"/>
+        </div>
+        <div class="field">
+          <label>Mileage</label>
+          <div class="mileage-wrapper">
+            <input type="number" autocomplete="off"/>
+            <span class="unit">KM</span>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="service-section">
+        <div class="service-header">Service</div>
+        <div class="service-content">
+          <div class="form-group">
+            <label>Service Date</label>
+            <div class="flex-group">
+              <input type="number" id="service-date" placeholder="Date" autocomplete="off" min="1" max="31"/>
+              <input type="number" id="service-month" placeholder="Month" autocomplete="off" min="1" max="12"/>
+              <input type="number" id="service-year" placeholder="Year" autocomplete="off" min="1900" max="2030"/>
+            </div>
+
+            <div class="custom-dropdown">
+              <label class="dropdown-label" id="type-label">Service Type</label>
+              <div class="dropdown-selected" onclick="toggleDropdown(this)">
+                <span>Oil Change</span>
+                <span class="dropdown-arrow">
+                  <img src="assets/chevron-down.png" alt="">
+                </span>
+              </div>
+              <div class="dropdown-options">
+                <div class="drop-option">Oil Change</div>
+                <div class="drop-option">Tire Change</div>
+                <div class="drop-option">Battery Check</div>
+              </div>
+            </div>
+            
+            <div class="custom-dropdown">
+              <label class="dropdown-label" id="center-label">Service Center</label>
+              <div class="dropdown-selected" onclick="toggleDropdown(this)">
+                <span>Val Motors</span>
+                <span class="dropdown-arrow">
+                  <img src="assets/chevron-down.png" alt="">
+                </span>
+              </div>
+              <div class="dropdown-options">
+                <div class="drop-option">Val Motors</div>
+                <div class="drop-option">Wan Auto</div>
+                <div class="drop-option">Ayong Jaya</div>
+                <div class="drop-option">Ray Perkasa</div>
+              </div>
+            </div>
+
+          <button onclick="addService()">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-log">
+      <div class="log-header">Service Log</div>
+      <div class="log-box" id="serviceDisplay">
+        <!-- Service logs will appear here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <script src="add_vehicle.js"></script>
+  <script type="module" src="add_vehicle_firebase.js"></script>
+</body>
+</html>
