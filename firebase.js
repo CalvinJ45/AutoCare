@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
@@ -8,7 +10,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.9.0/firebase
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCt1MOgWBat53pScwbytOVgiZ_wp9vPrc4",
+  apiKey: process.env.API_KEY,
   authDomain: "autocare-21c20.firebaseapp.com",
   projectId: "autocare-21c20",
   storageBucket: "autocare-21c20.firebasestorage.app",
