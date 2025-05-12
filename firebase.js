@@ -1,8 +1,3 @@
-import load_dotenv from 'dotenv';
-import os from 'os';
-
-load_dotenv()
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
