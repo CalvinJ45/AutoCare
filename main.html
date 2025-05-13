@@ -57,12 +57,20 @@
         </div>
     </div>
 
-    <div>Upcoming Maintanance</div>
+    <div id="maintenance-panel" class="maintenance hidden">
+        <div class="maintenance-header">
+            <span>🔧 Upcoming Maintenance</span>
+        </div>
+        <div class="maintenance-body" id="maintenance-list">
+            <!-- Filled dynamically -->
+        </div>
+    </div>
+
     <div class="flex flow-row space-between">
         <div>My Vehicle</div>
         <div>Find Mechanics</div>
     </div>
 
-    <script src="/script.js"></script>
+    <script type="module" src="/script.js"></script>
 </body>
 </html>

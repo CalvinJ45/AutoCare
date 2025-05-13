@@ -22,7 +22,19 @@ form.addEventListener("submit", async (e) => {
         const email = userDoc.data().email;
         const userCred = await signInWithEmailAndPassword(auth, email, password);
 
-        window.location.href = "boarding.html";
+        // window.location.href = "main.html";
+
+        // Step 3: Check if the user has registered vehicles by checking if collection exists
+        const vehiclesRef = collection(db, "users", userDoc.id, "vehicles");
+        const vehicleSnapshot = await getDocs(vehiclesRef);
+
+        if (vehicleSnapshot.empty) {
+            // No vehicles found → go to onboarding page
+            window.location.href = "boarding.html";
+        } else {
+            // Vehicles found → go to main dashboard
+            window.location.href = "main.html";
+        }
 
     } catch (error) {
         alert("Error: " + error.message);

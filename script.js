@@ -1,3 +1,13 @@
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { db } from './firebase.js';
+
 const daysContainer = document.getElementById('days');
 const monthYear = document.querySelector('.month-year');
 const prevBtn = document.getElementById('prev');
@@ -33,6 +43,10 @@ function generateCalendar(date) {
   // Fill the actual days
   for (let day = 1; day <= totalDays; day++) {
     const dayElement = document.createElement('div');
+    dayElement.classList.add('day'); // Make it clickable
+
+    const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    dayElement.setAttribute("data-date", dateStr); // Required for click handler
     dayElement.textContent = day;
 
     const thisDay = new Date(year, month, day);
@@ -71,3 +85,61 @@ nextBtn.addEventListener('click', () => {
 });
 
 generateCalendar(currentDate);
+
+async function fetchMaintenanceForDate(dateStr) {
+  const userId = "8sdjMDcguHh1oq3MUP73MAIZL8D2"; // replace with dynamic user ID
+  const vehicleDocRef = doc(db, "users", userId, "vehicles", "vehicle_0");
+  const vehicleSnap = await getDoc(vehicleDocRef);
+  const results = [];
+
+  if (vehicleSnap.exists()) {
+    const vehicleData = vehicleSnap.data();
+    const services = vehicleData.services || [];
+
+    services.forEach((service) => {
+      const { day, month, year } = service.date;
+      const serviceDateStr = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+      if (serviceDateStr === dateStr) {
+        results.push({
+          title: service.type,
+          due: "N/A", // or calculate dynamically if needed
+          link: "#",  // or generate a link
+          ...service,
+        });
+      }
+    });
+  }
+
+  return results;
+}
+
+
+document.getElementById("days").addEventListener("click", async function(e) {
+  if (!e.target.classList.contains("day")) return;
+
+  const dateStr = e.target.dataset.date; // format YYYY-MM-DD
+  const data = await fetchMaintenanceForDate(dateStr);
+
+  console.log(data);
+
+  const list = document.getElementById("maintenance-list");
+  list.innerHTML = "";
+
+  if (data.length > 0) {
+    data.forEach(item => {
+      const div = document.createElement("div");
+      div.innerHTML = `
+        <strong>${item.title}</strong><br>
+        Due in <span class="text blue">${item.due}</span><br>
+        <a href="${item.link}" class="text underline">Book an Appointment</a>
+      `;
+      div.classList.add("pad-5", "margin", "mt-2", "bg", "white", "rad-1", "border");
+      list.appendChild(div);
+    });
+    document.getElementById("maintenance-panel").classList.remove("hidden");
+  } else {
+    list.innerHTML = "<em>No maintenance scheduled</em>";
+    document.getElementById("maintenance-panel").classList.remove("hidden");
+  }
+});
