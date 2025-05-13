@@ -12,7 +12,7 @@ body{
 
 .calendar {
     width: 320px;
-    background: linear-gradient(to bottom right, #d0edf8, #b0dff0);
+    background: #B2DDD6;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     padding: 15px;
@@ -95,11 +95,13 @@ body{
     transform: translateX(-50%);
   }
 
-  .maintenance {
-  background-color: #fff;
+.maintenance {
+  margin: 0 auto;
+  width: 350px;
+  background-color: #B2DDD6;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  padding: 1rem;
+  /* padding: 1rem; */
   transition: transform 0.3s ease;
   max-height: 250px;
   overflow-y: auto;
@@ -108,12 +110,65 @@ body{
 .maintenance.hidden {
   display: none;
 }
+.maintenance-header {
+  background-color: #003F61;
+  font-family: Inter Semi-Bold;
+  font-weight: 600;
+  padding: 1rem;
+}
 .maintenance-body {
-  padding-top: 0.5rem;
+  display: flex;
+  padding: 0.5rem 1rem;
 }
 
 .day {
   cursor: pointer;
   padding: 10px;
   text-align: center;
+}
+
+.carousel-container {
+  position: relative;
+  height: 115px; /* Adjust as needed */
+  overflow: hidden;
+  scroll-snap-type: y mandatory;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.carousel-slide {
+  scroll-snap-align: start;
+  background: #B2DDD6;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-slide strong {
+  font-size: 1.2rem;
+}
+
+.carousel-slide .time {
+  color: #1e90ff;
+  font-weight: bold;
+}
+
+.carousel-slide a {
+  color: #333;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.carousel-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  margin: 0.5rem auto;
+  display: block;
 }

@@ -86,8 +86,32 @@ nextBtn.addEventListener('click', () => {
 
 generateCalendar(currentDate);
 
-async function fetchMaintenanceForDate(dateStr) {
-  const userId = "8sdjMDcguHh1oq3MUP73MAIZL8D2"; // replace with dynamic user ID
+let maintenanceData = [];
+let currentMaintenanceIndex = 0;
+
+function displayMaintenance(index) {
+  const list = document.getElementById("maintenance-card");
+  list.innerHTML = "";
+
+  if (maintenanceData.length === 0) {
+    list.innerHTML = "<em>No maintenance scheduled</em>";
+    return;
+  }
+
+  const item = maintenanceData[index];
+  const div = document.createElement("div");
+  div.innerHTML = `
+    <strong>${item.type}</strong><br>
+    Center: ${item.center}<br>
+    Date: ${item.date.day}/${item.date.month}/${item.date.year}<br>
+    <a href="#" class="text underline">Book an Appointment</a>
+  `;
+  div.classList.add("pad-5", "margin", "mt-2", "bg", "white", "rad-1", "border");
+  list.appendChild(div);
+}
+
+async function fetchAllMaintenance() {
+  const userId = "8sdjMDcguHh1oq3MUP73MAIZL8D2"; // Replace with dynamic ID
   const vehicleDocRef = doc(db, "users", userId, "vehicles", "vehicle_0");
   const vehicleSnap = await getDoc(vehicleDocRef);
   const results = [];
@@ -96,50 +120,71 @@ async function fetchMaintenanceForDate(dateStr) {
     const vehicleData = vehicleSnap.data();
     const services = vehicleData.services || [];
 
-    services.forEach((service) => {
+    services.forEach(service => {
       const { day, month, year } = service.date;
-      const serviceDateStr = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+      const serviceDate = new Date(year, month - 1, day);
+      const now = new Date();
+      const timeDiff = serviceDate - now;
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-      if (serviceDateStr === dateStr) {
-        results.push({
-          title: service.type,
-          due: "N/A", // or calculate dynamically if needed
-          link: "#",  // or generate a link
-          ...service,
-        });
-      }
+      results.push({
+        ...service,
+        due: `${days}D ${hours}H`,
+        link: "#"
+      });
+    });
+
+    // Sort by soonest
+    results.sort((a, b) => {
+      const aDate = new Date(a.date.year, a.date.month - 1, a.date.day);
+      const bDate = new Date(b.date.year, b.date.month - 1, b.date.day);
+      return aDate - bDate;
     });
   }
+
+  console.log("Maintenance Data:", results);
 
   return results;
 }
 
 
-document.getElementById("days").addEventListener("click", async function(e) {
-  if (!e.target.classList.contains("day")) return;
+const list = document.getElementById("carousel");
 
-  const dateStr = e.target.dataset.date; // format YYYY-MM-DD
-  const data = await fetchMaintenanceForDate(dateStr);
-
-  console.log(data);
-
-  const list = document.getElementById("maintenance-list");
+function renderCarousel(data) {
   list.innerHTML = "";
 
-  if (data.length > 0) {
-    data.forEach(item => {
-      const div = document.createElement("div");
-      div.innerHTML = `
-        <strong>${item.title}</strong><br>
-        Due in <span class="text blue">${item.due}</span><br>
-        <a href="${item.link}" class="text underline">Book an Appointment</a>
-      `;
-      div.classList.add("pad-5", "margin", "mt-2", "bg", "white", "rad-1", "border");
-      list.appendChild(div);
-    });
-    document.getElementById("maintenance-panel").classList.remove("hidden");
-  } else {
-    list.innerHTML = "<em>No maintenance scheduled</em>";
-    document.getElementById("maintenance-panel").classList.remove("hidden");
-  }
+  data.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className = "carousel-slide";
+    div.innerHTML = `
+      <div><strong>🔧 ${item.type}</strong></div>
+      <div>Due In <span class="time">${item.due}</span></div>
+      <div><a href="${item.link}">→ Book an Appointment</a></div>
+    `;
+    list.appendChild(div);
+  });
+
+  document.getElementById("maintenance-panel").classList.remove("hidden");
+}
+
+let currentSlideIndex = 0;
+
+function scrollToSlide(index) {
+  const slides = document.querySelectorAll('.carousel-slide');
+  if (slides.length === 0) return;
+
+  currentSlideIndex = Math.max(0, Math.min(index, slides.length - 1));
+  const slideHeight = slides[0].offsetHeight + 16; // 16px = gap
+  const container = document.getElementById('carousel');
+  container.scrollTop = currentSlideIndex * slideHeight;
+}
+
+document.getElementById('carousel-prev').addEventListener('click', () => {
+  scrollToSlide(currentSlideIndex - 1);
 });
+document.getElementById('carousel-next').addEventListener('click', () => {
+  scrollToSlide(currentSlideIndex + 1);
+});
+
+fetchAllMaintenance().then(renderCarousel);
