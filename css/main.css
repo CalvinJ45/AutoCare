@@ -128,11 +128,12 @@ body{
 }
 
 .carousel-container {
+  width: 100%;
   position: relative;
   height: 115px; /* Adjust as needed */
   scroll-behavior: smooth;
   overflow: hidden;
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -152,12 +153,12 @@ body{
   font-size: 1.2rem;
 }
 
-.carousel-slide .time {
+.time {
   color: #1e90ff;
   font-weight: bold;
 }
 
-.carousel-slide .overdue {
+.overdue {
   color: #ff1e1e;
   font-weight: bold;
 }
@@ -175,5 +176,11 @@ body{
   cursor: pointer;
   color: #333;
   margin: 0.5rem auto;
+  display: block;
+}
+
+#maintenance-emoji{
+  font-size: 2rem;
+  margin: 0 auto;
   display: block;
 }

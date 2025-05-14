@@ -138,17 +138,39 @@ function renderCarousel(data) {
     const now = new Date();
     const timeDiff = date - now;
 
+    console.log("Time Difference:", timeDiff);
+
     if (timeDiff < 0) {
       div.innerHTML = `
-      <div><strong>🔧 ${item.type}</strong></div>
-      <div>Due In <span class="overdue">${item.due}</span></div>
-      <div><a href="${item.link}">→ Book an Appointment</a></div>
+      <div class="flex space-between align-center">
+          <div class="flex gap gap-1">
+              <div>
+                  <img src="/img/wrench.png" alt="">
+              </div>
+              <div class="flex flow-column gap gap-0-5">
+                  <div><strong>${item.type}</strong></div>
+                  <div>Due In <span class="overdue">${item.due}</span></div>
+                  <div><a href="${item.link}">→ Book an Appointment</a></div>
+              </div>
+          </div>
+          <div></div>
+      </div>
       `;
     }else{
       div.innerHTML = `
-      <div><strong>🔧 ${item.type}</strong></div>
-      <div>Due In <span class="time">${item.due}</span></div>
-      <div><a href="${item.link}">→ Book an Appointment</a></div>
+      <div class="flex space-between align-center">
+          <div class="flex gap gap-1">
+              <div>
+                  <img src="/img/wrench.png" alt="">
+              </div>
+              <div class="flex flow-column gap gap-0-5">
+                  <div><strong>${item.type}</strong></div>
+                  <div>Due In <span class="time">${item.due}</span></div>
+                  <div><a href="${item.link}">→ Book an Appointment</a></div>
+              </div>
+          </div>
+          <div></div>
+      </div>
       `;
     }
 
@@ -165,7 +187,7 @@ function scrollToSlide(index) {
   if (slides.length === 0) return;
 
   currentSlideIndex = Math.max(0, Math.min(index, slides.length - 1));
-  const slideHeight = slides[0].offsetHeight + 16; // 16px = gap
+  const slideHeight = slides[index].offsetHeight + 16;; // 16px = gap
   const container = document.getElementById('carousel');
   container.scrollTop = currentSlideIndex * slideHeight;
 }
