@@ -157,6 +157,11 @@ body{
   font-weight: bold;
 }
 
+.carousel-slide .overdue {
+  color: #ff1e1e;
+  font-weight: bold;
+}
+
 .carousel-slide a {
   color: #333;
   text-decoration: underline;

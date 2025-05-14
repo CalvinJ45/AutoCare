@@ -86,30 +86,6 @@ nextBtn.addEventListener('click', () => {
 
 generateCalendar(currentDate);
 
-let maintenanceData = [];
-let currentMaintenanceIndex = 0;
-
-function displayMaintenance(index) {
-  const list = document.getElementById("maintenance-card");
-  list.innerHTML = "";
-
-  if (maintenanceData.length === 0) {
-    list.innerHTML = "<em>No maintenance scheduled</em>";
-    return;
-  }
-
-  const item = maintenanceData[index];
-  const div = document.createElement("div");
-  div.innerHTML = `
-    <strong>${item.type}</strong><br>
-    Center: ${item.center}<br>
-    Date: ${item.date.day}/${item.date.month}/${item.date.year}<br>
-    <a href="#" class="text underline">Book an Appointment</a>
-  `;
-  div.classList.add("pad-5", "margin", "mt-2", "bg", "white", "rad-1", "border");
-  list.appendChild(div);
-}
-
 async function fetchAllMaintenance() {
   const userId = "8sdjMDcguHh1oq3MUP73MAIZL8D2"; // Replace with dynamic ID
   const vehicleDocRef = doc(db, "users", userId, "vehicles", "vehicle_0");
@@ -157,11 +133,25 @@ function renderCarousel(data) {
   data.forEach((item, index) => {
     const div = document.createElement("div");
     div.className = "carousel-slide";
-    div.innerHTML = `
+
+    const date = new Date(item.date.year, item.date.month - 1, item.date.day);
+    const now = new Date();
+    const timeDiff = date - now;
+
+    if (timeDiff < 0) {
+      div.innerHTML = `
+      <div><strong>🔧 ${item.type}</strong></div>
+      <div>Due In <span class="overdue">${item.due}</span></div>
+      <div><a href="${item.link}">→ Book an Appointment</a></div>
+      `;
+    }else{
+      div.innerHTML = `
       <div><strong>🔧 ${item.type}</strong></div>
       <div>Due In <span class="time">${item.due}</span></div>
       <div><a href="${item.link}">→ Book an Appointment</a></div>
-    `;
+      `;
+    }
+
     list.appendChild(div);
   });
 
