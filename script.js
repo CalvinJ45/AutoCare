@@ -4,7 +4,8 @@ import {
   where,
   getDocs,
   doc,
-  getDoc
+  getDoc,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import { db } from './firebase.js';
 
@@ -17,6 +18,9 @@ let currentDate = new Date(); // Start at February 2025 (Month is 0-indexed)
 const currYear = currentDate.getFullYear();
 const currMonth = currentDate.getMonth();
 const currDay = currentDate.getDate();
+
+let maintenanceData = [];
+let currentMaintenanceIndex = 0;
 
 function generateCalendar(date) {
   daysContainer.innerHTML = ''; // Clear previous cells
@@ -97,6 +101,7 @@ async function fetchAllMaintenance() {
     const services = vehicleData.services || [];
 
     services.forEach(service => {
+      if (service.done === true) return;
       const { day, month, year } = service.date;
       const serviceDate = new Date(year, month - 1, day);
       const now = new Date();
@@ -152,8 +157,10 @@ function renderCarousel(data) {
                   <div>Due In <span class="overdue">${item.due}</span></div>
                   <div><a href="${item.link}">→ Book an Appointment</a></div>
               </div>
+              <div class="flex align-center">
+                <input type="checkbox" id="services${index}" name="services${index}">
+              </div>
           </div>
-          <div></div>
       </div>
       `;
     }else{
@@ -169,12 +176,21 @@ function renderCarousel(data) {
                   <div><a href="${item.link}">→ Book an Appointment</a></div>
               </div>
           </div>
-          <div></div>
+          <div class="flex align-center">
+             <input type="checkbox" id="services${index}" name="services${index}">
+          </div>
       </div>
       `;
     }
 
     list.appendChild(div);
+
+    const checkbox = div.querySelector(`#services${index}`);
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        showConfirmationPopup("✅ Mark this maintenance as done?", checkbox, index);
+      }
+    });
   });
 
   document.getElementById("maintenance-panel").classList.remove("hidden");
@@ -200,3 +216,78 @@ document.getElementById('carousel-next').addEventListener('click', () => {
 });
 
 fetchAllMaintenance().then(renderCarousel);
+
+let popupTimeoutId = null;
+let currentCheckbox = null;
+let currentServiceIndex = null;
+
+function showConfirmationPopup(message, checkbox, serviceIndex) {
+  const popup = document.getElementById("confirmation-popup");
+  document.getElementById("popup-message").textContent = message;
+  currentCheckbox = checkbox;
+  currentServiceIndex = serviceIndex;
+
+  popup.classList.add("show");
+  popup.classList.remove("hidden");
+
+  // Automatically confirm after 3 seconds
+  popupTimeoutId = setTimeout(() => {
+    confirmDone();
+  }, 3000);
+}
+
+function hidePopup() {
+  const popup = document.getElementById("confirmation-popup");
+  popup.classList.remove("show");
+  popup.classList.add("hidden");
+  clearTimeout(popupTimeoutId);
+}
+
+async function confirmDone() {
+  if (currentServiceIndex === null) return;
+
+  const userId = "8sdjMDcguHh1oq3MUP73MAIZL8D2"; // Replace with dynamic user ID
+  const vehicleId = "vehicle_0";
+  const vehicleRef = doc(db, "users", userId, "vehicles", vehicleId);
+  const vehicleSnap = await getDoc(vehicleRef);
+
+  if (vehicleSnap.exists()) {
+    const data = vehicleSnap.data();
+    const services = data.services || [];
+
+    if (services[currentServiceIndex]) {
+      services[currentServiceIndex].done = true;
+
+      await updateDoc(vehicleRef, {
+        services: services
+      });
+
+      // ✅ Re-fetch and re-render updated maintenance data
+      const updatedData = await fetchAllMaintenance();
+      maintenanceData = updatedData;
+      currentMaintenanceIndex = 0;
+      renderCarousel(updatedData);
+    }
+  }
+
+  hidePopup();
+  currentCheckbox = null;
+  currentServiceIndex = null;
+}
+
+function undoAction() {
+  if (currentCheckbox) {
+    currentCheckbox.checked = false;
+  }
+  hidePopup();
+}
+
+document.getElementById("confirm-btn").addEventListener("click", () => {
+  clearTimeout(popupTimeoutId);
+  confirmDone();
+  fetchAllMaintenance().then(renderCarousel);
+});
+
+document.getElementById("undo-btn").addEventListener("click", () => {
+  undoAction();
+});

@@ -74,10 +74,31 @@
         
     </div>
 
-    <div class="flex flow-row space-between">
-        <div>My Vehicle</div>
-        <div>Find Mechanics</div>
+    <div class="flex flow-row space-between" id="boxes">
+        <div class="flex flow-column" id="main-box">
+            <div class="flex gap gap-1 align-center">
+                <div>Car</div>
+                <div class="flex flow-column">
+                    <div>My</div>
+                    <div>Vehicle</div>
+                </div>
+            </div>
+            <div>Tap to view your vehicle info</div>
+        </div>
+        <div id="main-box">Find Mechanics</div>
     </div>
+
+    <div id="confirmation-popup" class="popup hidden">
+        <div class="popup-content">
+            <p id="popup-message">✅ Maintenance marked as done!</p>
+            <div class="popup-actions">
+                <button id="confirm-btn">Confirm</button>
+                <button id="undo-btn">Undo</button>
+            </div>
+        </div>
+    </div>
+
+
 
     <script type="module" src="/script.js"></script>
 </body>

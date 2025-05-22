@@ -228,6 +228,12 @@ h6 {
   &.white{
     background-color: #fff;
   }
+  &.blue{
+    background-color: var(--primary-blue);
+  }
+  &.light-blue{
+    background-color: var(--primary-blue-light);
+  }
 }
 
 .padding{
@@ -248,4 +254,29 @@ h6 {
 
 .h100vh{
   height: 100vh;
+}
+
+input[type="checkbox"]{
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 0.1rem;
+  border: 0.25rem solid var(--primary-blue);
+  border-radius: 0.5rem;
+
+  width: 30px;
+  height: 30px;
+  accent-color: var(--primary-blue);
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--primary-blue);
+}
+
+input[type="checkbox"]:hover {
+  background-color: var(--primary-blue);
+  opacity: 0.5;
 }

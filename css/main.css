@@ -12,7 +12,7 @@ body{
 
 .calendar {
     width: 320px;
-    background: #B2DDD6;
+    background: var(--primary-blue-light);
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     padding: 15px;
@@ -98,7 +98,7 @@ body{
 .maintenance {
   margin: 0 auto;
   width: 350px;
-  background-color: #B2DDD6;
+  background-color: var(--primary-blue-light);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   /* padding: 1rem; */
@@ -111,14 +111,14 @@ body{
   display: none;
 }
 .maintenance-header {
-  background-color: #003F61;
+  background-color: var(--primary-blue);
   font-family: Inter Semi-Bold;
   font-weight: 600;
   padding: 1rem;
 }
 .maintenance-body {
   display: flex;
-  padding: 0.5rem 1rem;
+  padding: 0rem 1rem;
 }
 
 .day {
@@ -141,7 +141,7 @@ body{
 
 .carousel-slide {
   scroll-snap-align: start;
-  background: #B2DDD6;
+  background: var(--primary-blue-light);
   border-radius: 12px;
   padding: 1rem;
   min-height: 100px;
@@ -183,4 +183,62 @@ body{
   font-size: 2rem;
   margin: 0 auto;
   display: block;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: #ffffff;
+  color: #000000;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.popup.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.popup-content {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.popup-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: var(--primary-blue);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#main-box{
+  width: 8rem;
+  height: 8rem;
+  border-radius: 15px;
+  background-color: var(--primary-blue-light);
+  padding: 1em;
+}
+
+#boxes{
+  width: 90%;
+  justify-content: space-between;
+  margin: 0 auto;
 }
