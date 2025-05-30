@@ -169,6 +169,7 @@ function addService() {
   const date = document.getElementById('service-date').value;
   const month = document.getElementById('service-month').value;
   const year = document.getElementById('service-year').value;
+  const serviceDone = false
 
   // Get selected service type and center
   const serviceType = document.querySelectorAll('.custom-dropdown')[0]
@@ -181,7 +182,8 @@ function addService() {
     date: { day: parseInt(date), month: parseInt(month), year: parseInt(year) },
     type: serviceType,
     center: serviceCenter,
-    timestamp: new Date()
+    timestamp: new Date(),
+    done: serviceDone
   };
 
   // Add to array (temporary)

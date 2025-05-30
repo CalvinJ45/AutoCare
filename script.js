@@ -230,10 +230,10 @@ function showConfirmationPopup(message, checkbox, serviceIndex) {
   popup.classList.add("show");
   popup.classList.remove("hidden");
 
-  // Automatically confirm after 3 seconds
+  // Automatically confirm after 5 seconds
   popupTimeoutId = setTimeout(() => {
     confirmDone();
-  }, 3000);
+  }, 5000);
 }
 
 function hidePopup() {
@@ -291,3 +291,55 @@ document.getElementById("confirm-btn").addEventListener("click", () => {
 document.getElementById("undo-btn").addEventListener("click", () => {
   undoAction();
 });
+
+const userId = "8sdjMDcguHh1oq3MUP73MAIZL8D2"; // Replace with dynamic user ID
+
+const vehicleMenu = document.getElementById("menu");
+const vehiclePopupOverlay = document.getElementById("vehicle-popup-overlay");
+const vehiclePopup = document.getElementById("vehicle-popup");
+const vehicleList = document.getElementById("vehicle-list");
+
+// Toggle popup
+vehicleMenu.addEventListener("click", () => {
+  vehiclePopupOverlay.classList.remove("hidden");
+});
+
+// Click outside to close
+vehiclePopupOverlay.addEventListener("click", (e) => {
+  if (!vehiclePopup.contains(e.target)) {
+    vehiclePopupOverlay.classList.add("hidden");
+  }
+});
+
+// Load vehicles (unchanged)
+async function loadVehicles() {
+  const userDocRef = doc(collection(db, "users"), userId);
+  const vehiclesRef = collection(userDocRef, "vehicles");
+
+  vehicleList.innerHTML = "";
+
+  for (let i = 0; ; i++) {
+    const vehicleDoc = doc(vehiclesRef, `vehicle_${i}`);
+    const vehicleSnap = await getDoc(vehicleDoc);
+    if (!vehicleSnap.exists()) break;
+
+    const { brand, model, year } = vehicleSnap.data();
+
+    const item = document.createElement("div");
+    item.className = "autocare-vehicle-option";
+    item.innerHTML = `
+      <strong>${model} ${year}</strong>
+      <span>${brand}</span>
+    `;
+
+    item.addEventListener("click", () => {
+      document.querySelector("#menu h3").textContent = `${model} ${year}`;
+      document.querySelector("#menu h4").textContent = brand;
+      vehiclePopupOverlay.classList.add("hidden");
+    });
+
+    vehicleList.appendChild(item);
+  }
+}
+
+loadVehicles();

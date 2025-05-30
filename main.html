@@ -39,9 +39,11 @@
 
     <div class="calendar flex flow-column justify-center">
         <div class="calendar-header">
-          <button id="prev">&#8249;</button>
-          <div class="month-year">April 2025</div>
-          <button id="next">&#8250;</button>
+                <div class="month-year">April 2025</div>
+                <div class="flex gap gap-1 align-center">
+                    <button id="prev" class="calendar-btn">&#8249;</button>
+                    <button id="next" class="calendar-btn">&#8250;</button>
+                </div>
         </div>
         <div class="calendar-body">
           <div class="day-names">
@@ -77,15 +79,28 @@
     <div class="flex flow-row space-between" id="boxes">
         <div class="flex flow-column" id="main-box">
             <div class="flex gap gap-1 align-center">
-                <div>Car</div>
-                <div class="flex flow-column">
-                    <div>My</div>
-                    <div>Vehicle</div>
+                <div><img src="/img/car.svg" alt=""></div>
+                <div class="flex flow-column mainbox-title">
+                    <div><h5>My</h5></div>
+                    <div><h5>Vehicle</h5></div>
                 </div>
             </div>
-            <div>Tap to view your vehicle info</div>
+            <div>
+                <p class="mainbox-desc">Tap to view your vehicle info</p>
+            </div>
         </div>
-        <div id="main-box">Find Mechanics</div>
+        <div class="flex flow-column" id="main-box">
+            <div class="flex gap gap-1 align-center">
+                <div><img src="/img/wrench.svg" alt=""></div>
+                <div class="flex flow-column mainbox-title">
+                    <div><h5>Find</h5></div>
+                    <div><h5>Mechanics</h5></div>
+                </div>
+            </div>
+            <div>
+                <p class="mainbox-desc">Tap to find trusted mechanics near you.</p>
+            </div>
+        </div>
     </div>
 
     <div id="confirmation-popup" class="popup hidden">
@@ -96,6 +111,27 @@
                 <button id="undo-btn">Undo</button>
             </div>
         </div>
+    </div>
+
+    <!-- Vehicle Popup Overlay -->
+    <div class="autocare-popup-overlay hidden" id="vehicle-popup-overlay">
+        <div class="autocare-popup" id="vehicle-popup">
+            <div class="autocare-popup-content">
+            <div class="autocare-popup-header">
+                <div class="autocare-popup-drag-bar"></div>
+            </div>
+            <div class="autocare-vehicle-list" id="vehicle-list">
+                <!-- Vehicles will be listed here -->
+            </div>
+            <div class="autocare-add-vehicle">
+                <button id="add-vehicle-btn">➕ Add New Vehicle</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chatbot-btn">
+        <img src="/img/chatbot.svg" alt="">
     </div>
 
 
