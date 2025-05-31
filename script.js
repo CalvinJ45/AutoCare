@@ -234,7 +234,7 @@ function renderCarousel(data) {
       <div class="flex space-between align-center">
           <div class="flex gap gap-1">
               <div>
-                  <img src="/img/wrench.png" alt="">
+                  <img src="img/wrench.png" alt="">
               </div>
               <div class="flex flow-column gap gap-0-5">
                   <div><h3><strong>${item.type}</strong></h3></div>
@@ -252,7 +252,7 @@ function renderCarousel(data) {
       <div class="flex space-between align-center">
           <div class="flex gap gap-1">
               <div>
-                  <img src="/img/wrench.png" alt="">
+                  <img src="img/wrench.png" alt="">
               </div>
               <div class="flex flow-column gap gap-0-5">
                   <div><strong>${item.type}</strong></div>
