@@ -33,7 +33,7 @@ form.addEventListener("submit", async (e) => {
             window.location.href = "boarding.html";
         } else {
             // Vehicles found → go to main dashboard
-            window.location.href = "index.html";
+            window.location.href = "main.html";
         }
 
     } catch (error) {
