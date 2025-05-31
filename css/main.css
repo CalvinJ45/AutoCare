@@ -66,7 +66,6 @@ body{
     border-radius: 50%;
     transition: background 0.3s;
   }
-  
   .sunday .today{
     background: #2D6F92;
     color: white;
@@ -149,10 +148,11 @@ body{
   scroll-snap-align: start;
   background: var(--primary-blue-light);
   border-radius: 12px;
-  padding: 1rem;
-  min-height: 100px;
+  /* padding: 1rem 0; */
+  min-height: 115px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .carousel-slide strong {

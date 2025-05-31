@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - My Vehicle</title>
+  <link rel="stylesheet" href="css/my_vehicle_style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="main.html">
+        <img src="assets/back-button.png" alt="" class="back-arrow">
+      </a>
+      <h2>My Vehicle</h2>
+    </div>
+
+    <div class="vehicle-info">
+      <!-- <div class="info-row">
+        <span>Car Brand</span><span>Toyota</span>
+      </div>
+      <div class="info-row">
+        <span>Model</span><span>Fortuner</span>
+      </div>
+      <div class="info-row">
+        <span>Year</span><span>2022</span>
+      </div> -->
+    </div>
+
+    <div class="status-cards">
+      <div class="status-card health">
+        <div class="status-header">
+          <img src="assets/heart.png" alt="">
+          <div class="status-title">Your Car’s <span class="healthy">HEALTHY</span></div>
+        </div>
+        <div class="circle">
+          <div class="percent">100%</div>
+          <div class="status-text">All Good Here!</div>
+        </div>
+      </div>
+
+      <div class="status-card mileage">
+        <div class="status-header">
+          <img src="assets/mileage.png" alt="">
+          <div class="status-title">Current Mileage</div>
+        </div>
+        <div class="mileage-value"></div>
+      </div>
+    </div>
+
+    <div class="service-history">
+      <div class="history-header">
+        <span>Service History</span>
+      </div>
+      <div class="log-box" id="serviceDisplay"></div>
+    </div>
+
+    <div id="mileage-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Update Mileage</h3>
+        <input type="number" id="mileage-input" min="0" placeholder="Enter New Mileage (KM)" />
+        <div class="modal-buttons">
+          <button id="mileage-cancel">Cancel</button>
+          <button id="mileage-save">Save</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script type="module" src="my_vehicle.js"></script>
+</body>
+</html>

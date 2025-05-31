@@ -280,3 +280,7 @@ input[type="checkbox"]:hover {
   background-color: var(--primary-blue);
   opacity: 0.5;
 }
+
+a{
+  text-decoration: none;
+}

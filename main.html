@@ -14,10 +14,10 @@
         <div class="flex space-between bg white border rad-2 padding pad-75 align-center" id="menu">
             <div class="flex flow-column margin mr-3">
                 <div>
-                    <h3 class="text blue bold">Fortuner 2022</h3>
+                    <h3 class="text blue bold" id="vehicle-title">Fortuner 2022</h3>
                 </div>
                 <div>
-                    <h4 class="text blue">Toyota</h4>
+                    <h4 class="text blue" id="vehicle-brand">Toyota</h4>
                 </div>
             </div>
             <div>
@@ -77,30 +77,34 @@
     </div>
 
     <div class="flex flow-row space-between" id="boxes">
-        <div class="flex flow-column" id="main-box">
-            <div class="flex gap gap-1 align-center">
-                <div><img src="/img/car.svg" alt=""></div>
-                <div class="flex flow-column mainbox-title">
-                    <div><h5>My</h5></div>
-                    <div><h5>Vehicle</h5></div>
+        <a href="my_vehicle.html">
+            <div class="flex flow-column" id="main-box">
+                <div class="flex gap gap-1 align-center">
+                    <div><img src="/img/car.svg" alt=""></div>
+                    <div class="flex flow-column mainbox-title">
+                        <div><h5>My</h5></div>
+                        <div><h5>Vehicle</h5></div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mainbox-desc">Tap to view your vehicle info</p>
                 </div>
             </div>
-            <div>
-                <p class="mainbox-desc">Tap to view your vehicle info</p>
-            </div>
-        </div>
-        <div class="flex flow-column" id="main-box">
-            <div class="flex gap gap-1 align-center">
-                <div><img src="/img/wrench.svg" alt=""></div>
-                <div class="flex flow-column mainbox-title">
-                    <div><h5>Find</h5></div>
-                    <div><h5>Mechanics</h5></div>
+        </a>
+        <a href="find_mechanics.html">
+            <div class="flex flow-column" id="main-box">
+                <div class="flex gap gap-1 align-center">
+                    <div><img src="/img/wrench.svg" alt=""></div>
+                    <div class="flex flow-column mainbox-title">
+                        <div><h5>Find</h5></div>
+                        <div><h5>Mechanics</h5></div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mainbox-desc">Tap to find trusted mechanics near you.</p>
                 </div>
             </div>
-            <div>
-                <p class="mainbox-desc">Tap to find trusted mechanics near you.</p>
-            </div>
-        </div>
+        </a>
     </div>
 
     <div id="confirmation-popup" class="popup hidden">
@@ -117,24 +121,24 @@
     <div class="autocare-popup-overlay hidden" id="vehicle-popup-overlay">
         <div class="autocare-popup" id="vehicle-popup">
             <div class="autocare-popup-content">
-            <div class="autocare-popup-header">
-                <div class="autocare-popup-drag-bar"></div>
-            </div>
-            <div class="autocare-vehicle-list" id="vehicle-list">
-                <!-- Vehicles will be listed here -->
-            </div>
-            <div class="autocare-add-vehicle">
-                <button id="add-vehicle-btn">➕ Add New Vehicle</button>
-            </div>
+                <div class="autocare-popup-header">
+                    <div class="autocare-popup-drag-bar"></div>
+                </div>
+                <div class="autocare-vehicle-list" id="vehicle-list">
+                    <!-- Vehicles will be listed here -->
+                </div>
+                <div class="autocare-add-vehicle">
+                    <a href="add_vehicle.html"><button id="add-vehicle-btn">➕ Add New Vehicle</button></a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="chatbot-btn">
-        <img src="/img/chatbot.svg" alt="">
-    </div>
-
-
+    <a href="autocare_chatbot.html">
+        <div id="chatbot-btn">
+            <img src="/img/chatbot.svg" alt="">
+        </div>
+    </a>
 
     <script type="module" src="/script.js"></script>
 </body>
