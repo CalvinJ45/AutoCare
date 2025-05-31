@@ -22,7 +22,7 @@ body {
     height: 63vh;
     background-color: none;
     opacity: 1;
-    background-image: url('/assets/background_alt.jpg');
+    background-image: url('assets/background_alt.jpg');
     background-size: cover;
     background-position: 50% 60%;
     filter: blur(4px);
