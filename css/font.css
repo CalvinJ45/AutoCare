@@ -1,25 +1,26 @@
 * {-webkit-font-smoothing: antialiased!important;}
 
 @font-face {
-    font-family: Inter;
-    src: url(/fonts/Inter_18pt-Regular.ttf) format('truetype');
-    font-weight: 400;
+  font-family: 'Inter';
+  src: url('/AutoCare/fonts/Inter_18pt-Regular.ttf') format('truetype');
+  font-weight: 400;
 }
 
 @font-face {
-    font-family: Inter Semi-Bold;
-    src: url(/fonts/Inter_24pt-Bold.ttf) format('truetype');
-    font-weight: 500;
+  font-family: 'Inter Semi-Bold';
+  src: url('/AutoCare/fonts/Inter_24pt-Bold.ttf') format('truetype');
+  font-weight: 500;
 }
 
 @font-face {
-    font-family: Inter Bold;
-    src: url(/fonts/Inter_24pt-ExtraBold.ttf) format('truetype');
-    font-weight: 600;
+  font-family: 'Inter Bold';
+  src: url('/AutoCare/fonts/Inter_24pt-ExtraBold.ttf') format('truetype');
+  font-weight: 600;
 }
 
 @font-face {
-    font-family: Inter Thin;
-    src: url(/fonts/Inter_18pt-Thin.ttf) format('truetype');
-    font-weight: 100;
+  font-family: 'Inter Thin';
+  src: url('/AutoCare/fonts/Inter_18pt-Thin.ttf') format('truetype');
+  font-weight: 100;
 }
+
