@@ -45,7 +45,7 @@ async function getBotReply(message) {
       headers: {
         "Authorization": "Bearer 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", // <- Replace with your actual API key
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://valweii.github.io/AutoCare/autocare_chatbot.html", // optional
+        "HTTP-Referer": "https://yourdomain.com", // optional
         "X-Title": "Auto-assist Chatbot" // optional
       },
       body: JSON.stringify({
