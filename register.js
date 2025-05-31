@@ -32,7 +32,7 @@ form.addEventListener("submit", async (e) => {
     document.getElementById("notification-box").classList.remove("hidden");
 
     document.getElementById("nextButton").addEventListener("click", () => {
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     });
 
   } catch (error) {
