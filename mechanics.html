@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mechanic Detail</title>
+  <link rel="stylesheet" href="css/mechanics_style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script type="module" src="mechanics.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div id="back-button">
+                <a href="find_mechanics.html">
+                    <img id="click" src="assets/back-button-2.png" alt="">
+                </a>
+            </div>
+            <img id="header-img" src="" alt="Mechanic Image" />
+            <div class="overlay">
+                <h2 id="mechanic-name"></h2>
+                <p id="mechanic-location"></p>
+                <span class="status-badge">Open</span>
+                <span class="contact-info">
+                    <img src="assets/phone-fill.png" alt="" class="phone-icon">
+                    <h5 id="contact"></h5>
+                </span>
+                <div class="right-overlay">
+                    <div class="stats-wrapper">
+                        <span id="rating-badge"></span>
+                        <span id="review-count"></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="info-row">
+                    <span><i class="fa-solid fa-location-dot" style="color: rgb(19, 20, 87);"></i> <span id="distance"></span></span>
+                    <span class="fav-btn" data-id=""><i class="fa-regular fa-heart" style="color: red;"></i> <span id="fav-count">0</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-placeholder">
+            <img class="map-button" src="assets/map-button.png" alt="">
+            <img class="map" src="assets/map-placeholder.png" alt="">
+        </div>
+
+        <section class="reviews-section">
+            <h3 class="review-title">Reviews</h3>
+            <hr class="review-break">
+            <div class="summary-box">
+            <div class="summary-item">
+                <p class="summary-label">Total Reviews</p>
+                <p class="summary-value" id="total-reviews">0</p>
+            </div>
+            <div class="summary-divider"></div>
+                <div class="summary-item">
+                    <p class="summary-label">Average Rating</p>
+                    <p class="summary-value">
+                        <span id="average-rating">0.0</span>
+                        <span class="stars" id="star-display"></span>
+                    </p>
+                </div>
+            </div>
+            <hr class="review-break">
+            <div id="review-list"></div>
+            <hr class="review-break">
+            <div class="review-form-container">
+                <form id="review-form">
+                    <h3 class="review-form-header">Leave a Review</h3>
+
+                    <div class="rating-stars" id="star-rating">
+                    <!-- Stars will be interactive via JS -->
+                    <i class="fa-star far" data-value="1"></i>
+                    <i class="fa-star far" data-value="2"></i>
+                    <i class="fa-star far" data-value="3"></i>
+                    <i class="fa-star far" data-value="4"></i>
+                    <i class="fa-star far" data-value="5"></i>
+                    </div>
+
+                    <textarea id="review-text" placeholder="Type your review. . ." required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

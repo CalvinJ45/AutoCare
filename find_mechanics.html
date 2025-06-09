@@ -14,102 +14,27 @@
   <div class="container">
     <div class="header">
       <a href="main.html">
-        <button class="back-btn">
-          <img src="img/back icon.png" alt="Back" />
-        </button>
+        <img src="assets/back-button.png" alt="" class="back-arrow">
       </a>
-      <h1>Find Mechanics</h1>
+      <h2>Find Mechanics</h2>
     </div>
 
     <div class="search-bar">
-      <input type="text" placeholder="Search for Mechanics..." />
+      <input id="searchInput" type="text" placeholder="Search for Mechanics..." autocomplete="off"/>
       <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
 
     <div class="filters">
       <button>Top Reviews</button>
-      <button class="active">Near Me</button>
+      <button>Near Me</button>
       <button>My Favorites</button>
     </div>
 
-    <div class="grid">
-      <div class="card">
-        <img src="img/Image1.jpg" alt="Val Motors" />
-        <div class="info">
-          <div class="top-row">
-            <p class="distance">1.79 km</p>
-            <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-          </div>
-          <h3>Val Motors, Alam Sutera</h3>
-          <p class="review">⭐ 4.8 • 100+ Reviews</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="img/Image2.jpg" alt="Wan Auto" />
-        <div class="info">
-          <div class="top-row">
-            <p class="distance">2.93 km</p>
-            <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-          </div>
-          <h3>Wan Auto, Jalan Raya Serpong</h3>
-          <p class="review">⭐ 4.9 • 200+ Reviews</p>
-        </div>
-      </div>
+    <div class="grid" id="mechanic-cards">
 
-      <div class="card">
-        <img src="img/Image3.jpg" alt="Ayong Jaya" />
-        <div class="info">
-          <div class="top-row">
-            <p class="distance">3.11 km</p>
-            <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-
-          </div>
-          <h3>Ayong Jaya, Alam Sutera</h3>
-          <p class="review">⭐ 3.5 • 1000+ Reviews</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/Image4.webp" alt="Ray Perkasa" />
-        <div class="info">
-          <div class="top-row">
-            <p class="distance">3.14 km</p>
-            <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-
-          </div>
-          <h3>Ray Perkasa, Alam Sutera</h3>
-          <p class="review">⭐ 5.0 • 500+ Reviews</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/Image5.jpg" alt="Garage 5" />
-        <div class="info">
-          <div class="top-row">
-            <p class="distance">3.25 km</p>
-            <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-
-          </div>
-          <h3>Maju Motors, Graha Raya</h3>
-          <p class="review">⭐ 4.6 • 150+ Reviews</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/Image6.webp" alt="Garage 6" />
-        <div class="info">
-          <div class="top-row">
-            <p class="distance">3.35 km</p>
-            <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-
-          </div>
-          <h3>Ken Repair, BSD Raya</h3>
-          <p class="review">⭐ 4.7 • 180+ Reviews</p>
-        </div>
-      </div>
     </div>
   </div>
 
-  <script src="find_mechanics_script.js"></script>
+  <script type="module" src="find_mechanics_script.js"></script>
 </body>
 </html>

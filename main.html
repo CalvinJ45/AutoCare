@@ -66,7 +66,7 @@
         </div>
         <div class="maintenance-body flex align-center space-between">
             <div class="carousel-container" id="carousel">
-                <!-- Slides inserted dynamically here -->
+                
             </div>
             <div>
                 <button id="carousel-prev" class="carousel-btn">▲</button>
@@ -109,10 +109,25 @@
 
     <div id="confirmation-popup" class="popup hidden">
         <div class="popup-content">
-            <p id="popup-message">✅ Maintenance marked as done!</p>
+            <label for="service-date">Date of Service:</label>
+            <input type="date" id="service-date">
+
+            <label for="service-location">Location of Service:</label>
+            <select id="service-location">
+                <option value="" disabled selected>Select location</option>
+                <option value="Val Motors">Val Motors</option>
+                <option value="Wan Auto">Wan Auto</option>
+                <option value="Ayong Jaya">Ayong Jaya</option>
+                <option value="Ray Perkasa">Ray Perkasa</option>
+                <option value="Others">Others</option>
+            </select>
+
+
+            <p id="popup-message" class="hidden"></p>
+
             <div class="popup-actions">
-                <button id="confirm-btn">Confirm</button>
-                <button id="undo-btn">Undo</button>
+            <button id="confirm-btn">Confirm</button>
+            <button id="undo-btn">Undo</button>
             </div>
         </div>
     </div>
@@ -128,7 +143,12 @@
                     <!-- Vehicles will be listed here -->
                 </div>
                 <div class="autocare-add-vehicle">
-                    <a href="add_vehicle.html"><button id="add-vehicle-btn">➕ Add New Vehicle</button></a>
+                    <a href="add_vehicle.html">
+                        <button id="add-vehicle-btn">
+                            <img src="assets/add-button.png" alt="Add" style="width: 40px; height: 40px; vertical-align: middle;">
+                            Add New Vehicle
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

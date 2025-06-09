@@ -9,7 +9,7 @@ body {
   width: 430px;
   height: 932px;
   margin: 0;
-  background: linear-gradient(to bottom, #004e92, #00c7a3);
+  background: linear-gradient(180deg, rgba(0, 63, 97, 1) 0%, rgba(0, 159, 150, 1) 50%, rgba(0, 159, 150, 1) 100%);
   color: white;
   display: flex;
   flex-direction: column;

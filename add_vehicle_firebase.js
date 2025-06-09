@@ -37,7 +37,11 @@ async function saveVehicleData() {
         const vehicleDocRef = doc(db, "users", userId, "vehicles", vehicleId);
         await setDoc(vehicleDocRef, vehicleData);
 
-        alert("Vehicle data saved successfully!");
+        document.getElementById("notification-box").classList.remove("hidden");
+        document.getElementById("nextButton").addEventListener("click", () => {
+            window.location.href = "main.html";
+        });
+
         console.log(`Saved as ${vehicleId}:`, vehicleData);
         serviceHistoryList = [];
 

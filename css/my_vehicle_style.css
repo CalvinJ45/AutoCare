@@ -105,6 +105,11 @@ h2 {
   font-weight: 700;
 }
 
+.unhealthy {
+  color: #FF0000;
+  font-weight: 700;
+}
+
 .circle {
   display: flex;
   flex-direction: column;
@@ -124,7 +129,7 @@ h2 {
 }
 
 .mileage-value {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
   margin-top: 8px;
   color: #111;

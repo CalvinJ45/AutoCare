@@ -36,6 +36,7 @@ const chatHistory = [
   }
 ];
 
+
 // Get bot response from OpenRouter API (DeepSeek model)
 async function getBotReply(message) {
   try {
@@ -43,7 +44,7 @@ async function getBotReply(message) {
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer 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", // <- Replace with your actual API key
+        "Authorization": "Bearer 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", // <- Replace with your actual API key
         "Content-Type": "application/json",
         "HTTP-Referer": "https://yourdomain.com", // optional
         "X-Title": "Auto-assist Chatbot" // optional

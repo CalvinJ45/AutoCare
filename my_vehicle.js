@@ -1,6 +1,7 @@
 import { auth, db } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 import { collection, doc, getDoc, getDocs, updateDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { fetchAllMaintenance } from './maintenanceUtils.js';
 
 const originalModalContent = `
   <h3>Update Mileage</h3>
@@ -60,23 +61,25 @@ onAuthStateChanged(auth, async (user) => {
    }
 
   const uid = user.uid;
-  const currentVehicle = "vehicle_0"
+  const currentVehicle = localStorage.getItem("selectedVehicleId") || "vehicle_0";
   const vehicleDocRef = doc(db, "users", uid, "vehicles", currentVehicle);
   const vehicleSnap = await getDoc(vehicleDocRef);
 
+  
   if (!vehicleSnap.exists()) {
     document.querySelector(".vehicle-info").textContent = "No vehicle data found.";
     return;
   }
-
+  
   const vehicle = vehicleSnap.data();
-
+  
   document.querySelector(".vehicle-info").innerHTML = `
-      <div class="info-row"><span>Car Brand</span><span>${vehicle.brand}</span></div>
-      <div class="info-row"><span>Model</span><span>${vehicle.model}</span></div>
-      <div class="info-row"><span>Year</span><span>${vehicle.year}</span></div>
+  <div class="info-row"><span>Car Brand</span><span>${vehicle.brand}</span></div>
+  <div class="info-row"><span>Model</span><span>${vehicle.model}</span></div>
+  <div class="info-row"><span>Year</span><span>${vehicle.year}</span></div>
   `;
-
+  
+  updateCarHealth(user.uid, vehicleDocRef)
   const mileageNum = document.querySelector(".mileage-value");
   mileageNum.textContent = `${vehicle.mileage} KM`;
 
@@ -155,3 +158,34 @@ onAuthStateChanged(auth, async (user) => {
     console.log("Vehicle document not found");
   }
 });
+
+async function updateCarHealth(uid, vehicleRef) {
+  const vehicleSnap = await getDoc(vehicleRef);
+  const maintenanceItems = await fetchAllMaintenance(uid, vehicleSnap);
+
+  // Count how many are overdue
+  const now = new Date();
+  const overdueCount = maintenanceItems.filter(item => new Date(item.dueDate) < now).length;
+
+  // Calculate health: starts at 100%, minus 20% per overdue item
+  let health = Math.max(0, 100 - (overdueCount * 20));
+
+  // Update DOM
+  const percentEl = document.querySelector('.percent');
+  const statusTextEl = document.querySelector('.status-text');
+  const healthLabelEl = document.querySelector('.status-title .healthy');
+
+  percentEl.textContent = `${health}%`;
+
+  if (health === 100) {
+    statusTextEl.textContent = "All Good Here!";
+    healthLabelEl.textContent = "HEALTHY";
+    healthLabelEl.classList.remove("unhealthy");
+    healthLabelEl.classList.add("healthy");
+  } else {
+    statusTextEl.textContent = `${overdueCount} Service${overdueCount > 1 ? "s" : ""} Overdue`;
+    healthLabelEl.textContent = "UNHEALTHY";
+    healthLabelEl.classList.remove("healthy");
+    healthLabelEl.classList.add("unhealthy");
+  }
+}

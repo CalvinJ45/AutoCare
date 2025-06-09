@@ -1,7 +1,7 @@
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
-  background: linear-gradient(to bottom, #003f61 0%, #009f96 50%, rgba(36, 209, 139, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(0, 63, 97, 1) 0%, rgba(0, 159, 150, 1) 50%, rgba(0, 159, 150, 1) 100%);
   color: white;
   min-height: 100vh;
   overflow-x: hidden;
@@ -10,7 +10,8 @@ body {
 .container {
   max-width: 430px;
   margin: auto;
-  padding: calc(env(safe-area-inset-top) + 1rem) 1rem calc(env(safe-area-inset-bottom) + 1rem);
+  padding: 40px;
+  /* padding: calc(env(safe-area-inset-top) + 1rem) 1rem calc(env(safe-area-inset-bottom) + 1rem); */
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -19,25 +20,21 @@ body {
 .header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
-
-.back-btn {
-  background: none;
-  border: none;
+  
+.back-arrow {
   cursor: pointer;
+  width: 24px;
+  height: auto;
+  margin-right: 20px;
 }
-
-.back-btn img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-}
-
-h1 {
-  font-size: 1.5rem;
+  
+h2 {
+  font-size: 24px;
   margin: 0;
+  flex-grow: 1;
 }
 
 .search-bar {
@@ -61,14 +58,14 @@ h1 {
   background: white;
   color: black;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1;
 }
 
 .filters {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .filters button {
@@ -112,6 +109,7 @@ h1 {
 
 .info {
   padding: 0.5rem;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -158,4 +156,10 @@ h1 {
 
 .fav-btn.clicked {
   transform: scale(1);
+}
+
+.fav-notif {
+  display: block;
+  grid-column: 1 / -1;
+  text-align: center;
 }
