@@ -44,7 +44,7 @@ async function getBotReply(message) {
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer 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", // <- Replace with your actual API key
+        "Authorization": "Bearer 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", // <- Replace with your actual API key
         "Content-Type": "application/json",
         "HTTP-Referer": "https://yourdomain.com", // optional
         "X-Title": "Auto-assist Chatbot" // optional
