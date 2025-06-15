@@ -1,5 +1,3 @@
-// maintenanceUtils.js
-
 export async function fetchAllMaintenance(uid, vehicleSnap) {
   const results = [];
 

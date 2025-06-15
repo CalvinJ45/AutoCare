@@ -1,27 +1,25 @@
-// Import necessary functions from Firebase SDK
 import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import { auth, db } from "./firebase.js";
 
-// Get form elements
 const form = document.getElementById("registerForm");
 
 form.addEventListener("submit", async (e) => {
-  e.preventDefault();  // Prevent the default form submission
-  // Get form input values
+  e.preventDefault();  
+  
   const username = document.getElementById("username").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const phoneNumber = document.getElementById("phoneNumber").value;
 
   try {
-    // Create a new user with email and password
+    
     const userCred = await createUserWithEmailAndPassword(auth, email, password);
 
-    // Update the user's profile with the username
+    
     await updateProfile(userCred.user, { displayName: username });
 
-    // Save additional user data (phone number) to Firestore
+    
     await setDoc(doc(db, "users", userCred.user.uid), {
       username: username,
       email: email,

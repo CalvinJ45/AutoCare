@@ -83,7 +83,7 @@ onAuthStateChanged(auth, async (user) => {
   const mileageNum = document.querySelector(".mileage-value");
   mileageNum.textContent = `${vehicle.mileage} KM`;
 
-  //   Changing Mileage
+  
   const modal = document.getElementById("mileage-modal");
   const mileageInput = document.getElementById("mileage-input");
   const saveBtn = document.getElementById("mileage-save");
@@ -94,7 +94,7 @@ onAuthStateChanged(auth, async (user) => {
   document.querySelector(".status-card.mileage").addEventListener("click", () => {
   modalContent.innerHTML = originalModalContent;
 
-  // Prefill the input with the current mileage
+  
   const mileageInput = modalContent.querySelector("#mileage-input");
   mileageInput.value = vehicle.mileage;
 
@@ -117,25 +117,25 @@ onAuthStateChanged(auth, async (user) => {
     newMileage = Number(newMileage);
   });
 
-  // Show Services Information
+  
   const displayDiv = document.getElementById("serviceDisplay");
-  displayDiv.innerHTML = ""; // Clear previous entries
+  displayDiv.innerHTML = ""; 
 
   if (vehicleSnap.exists()) {
     const vehicleData = vehicleSnap.data();
-    const services = vehicleData.services; // This should be an array or object
+    const services = vehicleData.services; 
 
     if (services && services.length > 0) {
-      // Sort services from newest to oldest
+      
       services.sort((a, b) => {
         const dateA = new Date(a.date.year, a.date.month - 1, a.date.day);
         const dateB = new Date(b.date.year, b.date.month - 1, b.date.day);
-        return dateB - dateA; // Newest first
+        return dateB - dateA; 
       });
 
       services.forEach(service => {
         console.log("Service Data:", service);
-        // Access service.type, service.date, service.center here
+        
 
         const day = String(service.date.day).padStart(2, '0');
         const month = String(service.date.month).padStart(2, '0');
@@ -163,14 +163,14 @@ async function updateCarHealth(uid, vehicleRef) {
   const vehicleSnap = await getDoc(vehicleRef);
   const maintenanceItems = await fetchAllMaintenance(uid, vehicleSnap);
 
-  // Count how many are overdue
+  
   const now = new Date();
   const overdueCount = maintenanceItems.filter(item => new Date(item.dueDate) < now).length;
 
-  // Calculate health: starts at 100%, minus 20% per overdue item
+  
   let health = Math.max(0, 100 - (overdueCount * 20));
 
-  // Update DOM
+  
   const percentEl = document.querySelector('.percent');
   const statusTextEl = document.querySelector('.status-text');
   const healthLabelEl = document.querySelector('.status-title .healthy');

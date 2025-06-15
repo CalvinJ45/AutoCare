@@ -1,7 +1,6 @@
 const chatBox = document.getElementById('chat-box');
 const userInput = document.getElementById('user-input');
 
-// Send message to bot
 async function sendMessage() {
   const message = userInput.value.trim();
   if (message === '') return;
@@ -9,18 +8,15 @@ async function sendMessage() {
   appendMessage('user', message);
   userInput.value = '';
 
-  // Show loading message
   appendMessage('bot', '...');
 
   const reply = await getBotReply(message);
 
-  // Replace loading with actual reply
   const loading = document.querySelector('.bot:last-child');
   loading.remove();
   appendMessage('bot', reply);
 }
 
-// Append message to the chat UI
 function appendMessage(sender, text) {
   const msg = document.createElement('div');
   msg.className = `message ${sender}`;
@@ -37,30 +33,29 @@ const chatHistory = [
 ];
 
 
-// Get bot response from OpenRouter API (DeepSeek model)
 async function getBotReply(message) {
   try {
     chatHistory.push({ role: "user", content: message });
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer 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", // <- Replace with your actual API key
+        "Authorization": "Bearer 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",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://yourdomain.com", // optional
-        "X-Title": "Auto-assist Chatbot" // optional
+        "HTTP-Referer": "https://yourdomain.com",
+        "X-Title": "Auto-assist Chatbot"
       },
       body: JSON.stringify({
         model: "deepseek/deepseek-r1:free",
         messages: chatHistory
       })
     });
+    console.log(headers)
 
     const data = await response.json();
 
     if (data.choices && data.choices.length > 0) {
       const botMessage = data.choices[0].message.content;
 
-      // Tambahkan balasan bot ke riwayat
       chatHistory.push({ role: "assistant", content: botMessage });
 
       return botMessage;
@@ -74,7 +69,6 @@ async function getBotReply(message) {
   }
 };
 
-// Close Chat Function
 function closeChat() {
   const chatContainer = document.querySelector('.chat-container');
   chatContainer.style.display = 'none';

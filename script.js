@@ -10,10 +10,9 @@ import {
 import { db, auth } from './firebase.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
-// Check if user is authenticated
-let uid = null; // Initialize variables
-let vid = null; // Initialize variables
-let currentMaintenanceDates = []; // Global cache
+let uid = null; 
+let vid = null; 
+let currentMaintenanceDates = []; 
 
 const vehicleTitle = document.getElementById("vehicle-title");
 const vehicleBrand = document.getElementById("vehicle-brand");
@@ -28,17 +27,17 @@ onAuthStateChanged(auth, async (user) => {
 
         const { model, year, brand } = vid.data();
 
-        // Dynamically update the HTML
+        
         vehicleTitle.textContent = `${model} ${year}`;
         vehicleBrand.textContent = brand;
 
         console.log("Logged-in user UID:", uid);
-        // You can now fetch their vehicles, etc.
+        
 
         let currentDate = new Date();
         const upcomingMaintenance = await fetchAllMaintenance(uid, vid);
 
-        // Extract dates for the calendar
+        
         currentMaintenanceDates = upcomingMaintenance.map(m => m.date);
 
         fetchAllMaintenance(uid, vid).then(renderCarousel);
@@ -57,10 +56,10 @@ onAuthStateChanged(auth, async (user) => {
 
         document.getElementById("confirm-btn").addEventListener("click", () => {
           clearTimeout(popupTimeoutId);
-          confirmDone(uid, vid, vehicleRef); // This function now handles everything
+          confirmDone(uid, vid, vehicleRef); 
         });
     } else {
-        // No user is signed in → redirect or handle gracefully
+        
         window.location.href = "index.html";
     }
 });
@@ -77,7 +76,7 @@ const currDay = currentDate.getDate();
 
 
 function generateCalendar(date, maintenanceDates = []) {
-  daysContainer.innerHTML = ''; // Clear previous cells
+  daysContainer.innerHTML = ''; 
 
   const year = date.getFullYear();
   const month = date.getMonth();
@@ -88,28 +87,28 @@ function generateCalendar(date, maintenanceDates = []) {
   const firstDayOfMonth = new Date(year, month, 1);
   const lastDayOfMonth = new Date(year, month + 1, 0);
 
-  const startDay = firstDayOfMonth.getDay(); // 0 (Sun) - 6 (Sat)
-  const totalDays = lastDayOfMonth.getDate(); // How many days in the month
+  const startDay = firstDayOfMonth.getDay(); 
+  const totalDays = lastDayOfMonth.getDate(); 
 
-  // Fill blank spaces before first day
+  
   for (let i = 0; i < startDay; i++) {
     const emptyDiv = document.createElement('div');
     emptyDiv.classList.add('greyed');
     daysContainer.appendChild(emptyDiv);
   }
 
-  // Fill the actual days
+  
   for (let day = 1; day <= totalDays; day++) {
     const dayElement = document.createElement('div');
-    dayElement.classList.add('day'); // Make it clickable
+    dayElement.classList.add('day'); 
 
     const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-    dayElement.setAttribute("data-date", dateStr); // Required for click handler
+    dayElement.setAttribute("data-date", dateStr); 
     dayElement.textContent = day;
 
     const thisDay = new Date(year, month, day);
 
-    // Sundays
+    
     if (thisDay.getDay() === 0) {
       if (day === days && firstDayOfMonth.getMonth() === currMonth && firstDayOfMonth.getFullYear() === currYear) {
         dayElement.classList.add('today');
@@ -118,12 +117,12 @@ function generateCalendar(date, maintenanceDates = []) {
       }
     }
 
-    // Highlight today
+    
     if (day === currDay && firstDayOfMonth.getMonth() === currMonth && firstDayOfMonth.getFullYear() === currYear) {
       dayElement.classList.add('today');
     }
 
-    // Highlight if it's a maintenance date
+    
     const isMaintenanceDay = maintenanceDates.some(m => 
       m.day === day && m.month === (month + 1) && m.year === year
     );
@@ -152,10 +151,10 @@ async function fetchAllMaintenance(uid, vid) {
     const vehicleData = vehicleSnap.data();
     const services = vehicleData.services || [];
 
-    // Group to store the latest service date for each type
+    
     const latestServiceMap = {};
 
-    // First, track the latest General Inspection (for fallback)
+    
     let latestGeneralInspectionDate = null;
 
     services.forEach(service => {
@@ -164,13 +163,13 @@ async function fetchAllMaintenance(uid, vid) {
       const { day, month, year } = service.date;
       const serviceDate = new Date(year, month - 1, day);
 
-      // Save latest service per type
+      
       const current = latestServiceMap[service.type];
       if (!current || serviceDate > new Date(current.date.year, current.date.month - 1, current.date.day)) {
         latestServiceMap[service.type] = { ...service, date: { day, month, year } };
       }
 
-      // Also track latest general inspection
+      
       if (service.type === "General Inspection") {
         if (!latestGeneralInspectionDate || serviceDate > latestGeneralInspectionDate) {
           latestGeneralInspectionDate = serviceDate;
@@ -178,7 +177,7 @@ async function fetchAllMaintenance(uid, vid) {
       }
     });
 
-    // Now build upcoming maintenance list
+    
     for (const [type, intervalMonths] of Object.entries(MAINTENANCE_INTERVALS)) {
       let baseDate;
       if (latestServiceMap[type]) {
@@ -187,7 +186,7 @@ async function fetchAllMaintenance(uid, vid) {
       } else if (latestGeneralInspectionDate) {
         baseDate = new Date(latestGeneralInspectionDate);
       } else {
-        continue; // skip if even General Inspection doesn't exist
+        continue; 
       }
 
       const dueDate = new Date(baseDate);
@@ -211,7 +210,7 @@ async function fetchAllMaintenance(uid, vid) {
       });
     }
 
-    // Sort by soonest due
+    
     results.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
   }
 
@@ -294,7 +293,7 @@ function scrollToSlide(index) {
   if (slides.length === 0) return;
 
   currentSlideIndex = Math.max(0, Math.min(index, slides.length - 1));
-  const slideHeight = slides[index].offsetHeight + 16;; // 16px = gap
+  const slideHeight = slides[index].offsetHeight + 16;; 
   const container = document.getElementById('carousel');
   container.scrollTop = currentSlideIndex * slideHeight;
 }
@@ -312,17 +311,17 @@ let currentServiceIndex = null;
 
 function showConfirmationPopup(message, checkbox, serviceIndex) {
   const popup = document.getElementById("confirmation-popup");
-  // document.getElementById("popup-message").textContent = message;
+  
   currentCheckbox = checkbox;
   currentServiceIndex = serviceIndex;
 
   popup.classList.add("show");
   popup.classList.remove("hidden");
 
-  // Automatically cancel after 5 seconds
-  // popupTimeoutId = setTimeout(() => {
-  //   undoAction();
-  // }, 5000);
+  
+  
+  
+  
 }
 
 function hidePopup() {
@@ -341,7 +340,7 @@ async function confirmDone(uid, vid, vehicleRef) {
   const vehicleData = vehicleSnap.data();
   const services = vehicleData.services || [];
 
-  // Get user input from popup form
+  
   const dateInput = document.getElementById('service-date');
   const locationSelect = document.getElementById('service-location');
 
@@ -373,18 +372,18 @@ async function confirmDone(uid, vid, vehicleRef) {
 
     hidePopup();
     
-    // 1. Refetch the data from Firestore to get the most up-to-date state
+    
     const updatedVid = await getDoc(vehicleRef);
     const updatedData = await fetchAllMaintenance(uid, updatedVid);
 
-    // 2. (THIS IS THE KEY) Map the updated data to an array of date objects
+    
     const updatedMaintenanceDates = updatedData.map(m => m.date);
 
-    // 3. Pass the correctly formatted array to the calendar function
+    
     const currDate = new Date();
     generateCalendar(currDate, updatedMaintenanceDates); 
 
-    // Refresh the carousel with the new data
+    
     renderCarousel(updatedData);
   }
 
@@ -409,19 +408,19 @@ const vehiclePopupOverlay = document.getElementById("vehicle-popup-overlay");
 const vehiclePopup = document.getElementById("vehicle-popup");
 const vehicleList = document.getElementById("vehicle-list");
 
-// Toggle popup
+
 vehicleMenu.addEventListener("click", () => {
   vehiclePopupOverlay.classList.remove("hidden");
 });
 
-// Click outside to close
+
 vehiclePopupOverlay.addEventListener("click", (e) => {
   if (!vehiclePopup.contains(e.target)) {
     vehiclePopupOverlay.classList.add("hidden");
   }
 });
 
-// Load vehicles (unchanged)
+
 async function loadVehicles(uid, vid) {
   const userDocRef = doc(collection(db, "users"), uid);
   const vehiclesRef = collection(userDocRef, "vehicles");
@@ -443,20 +442,20 @@ async function loadVehicles(uid, vid) {
     `;
 
     item.addEventListener("click", async() => {
-      vehicleId = `vehicle_${i}`; // Update vid with the selected vehicle ID
+      vehicleId = `vehicle_${i}`; 
       localStorage.setItem("selectedVehicleId", vehicleId);
       document.querySelector("#menu h3").textContent = `${model} ${year}`;
       document.querySelector("#menu h4").textContent = brand;
       vehiclePopupOverlay.classList.add("hidden");
 
-      // Recalculate maintenance and refresh UI
+      
       const vehicleRef = doc(collection(db, "users", uid, "vehicles"), vehicleId);
-      vid = await getDoc(vehicleRef); // ✅ This is already good
+      vid = await getDoc(vehicleRef); 
 
       const currentDate = new Date();
       const upcomingMaintenance = await fetchAllMaintenance(uid, vid);
 
-      // ✅ Update global dates for calendar use
+      
       currentMaintenanceDates = upcomingMaintenance.map(m => m.date);
 
       generateCalendar(currentDate, currentMaintenanceDates);

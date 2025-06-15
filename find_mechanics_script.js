@@ -1,4 +1,4 @@
-import { updateDoc, increment, collection, doc, setDoc, getDocs, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { updateDoc, increment, collection, doc, setDoc, getDocs, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"
 import { auth, db } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
@@ -7,11 +7,11 @@ onAuthStateChanged(auth, (user) => {
     loadMechanics();
   } else {
     console.log("Not logged in");
-    loadMechanics(); // Still load, just without favorites
+    loadMechanics(); 
   }
 });
 
-// Favorites
+
 function addFavoriteListeners() {
   const favButtons = document.querySelectorAll(".fav-btn");
 
@@ -31,14 +31,14 @@ function addFavoriteListeners() {
       const favDoc = await getDoc(favRef);
 
       if (favDoc.exists()) {
-        // Unfavorite
+        
         await deleteDoc(favRef);
         await updateDoc(mechanicRef, {
           favorite_count: increment(-1)
         });
         icon.className = "fa-regular fa-heart";
       } else {
-        // Favorite
+        
         const mechanicData = await getDoc(mechanicRef);
         if (mechanicData.exists()) {
           await setDoc(favRef, mechanicData.data());
@@ -67,7 +67,7 @@ async function loadMechanics() {
   const mechanicRef = collection(db, "mechanics");
   const snapshot = await getDocs(mechanicRef);
 
-  container.innerHTML = ""; // Clear container
+  container.innerHTML = ""; 
 
   snapshot.forEach(doc => {
     const data = doc.data();
@@ -75,7 +75,7 @@ async function loadMechanics() {
     const isFavorite = favoriteIds.has(mechanicId);
     const heartClass = isFavorite ? "fa-solid fa-heart" : "fa-regular fa-heart";
 
-    // Create the card element
+    
     const card = document.createElement("div");
     card.classList.add("card");
 
@@ -100,15 +100,15 @@ async function loadMechanics() {
       window.location.href = "mechanics.html";
     });
 
-    // Append the card to container
+    
     container.appendChild(card);
   });
 
-  // Reattach favorite listeners to the new cards
+  
   addFavoriteListeners();
 }
 
-// Search
+
 const searchInput = document.getElementById('searchInput');
 
 searchInput.addEventListener('input', function () {
@@ -118,21 +118,21 @@ searchInput.addEventListener('input', function () {
   cards.forEach(card => {
     const title = card.querySelector('h3').textContent.toLowerCase();
     if (title.includes(filter)) {
-      card.style.display = 'block'; // or 'flex' if using flexbox layout
+      card.style.display = 'block'; 
     } else {
       card.style.display = 'none';
     }
   });
 });
 
-// Filters
+
 const filterButtons = document.querySelectorAll('.filters button');
 
 filterButtons.forEach(button => {
   button.addEventListener('click', async () => {
-    // Remove 'active' class from all buttons
+    
     filterButtons.forEach(btn => btn.classList.remove('active'));
-    // Add 'active' class to the clicked button
+    
     button.classList.add('active');
 
     const filter = button.textContent.trim();
@@ -147,7 +147,7 @@ filterButtons.forEach(button => {
   });
 });
 
-// Load only favorite mechanics
+
 async function loadFavoriteMechanics() {
   const container = document.getElementById('mechanic-cards');
   container.innerHTML = '';
@@ -180,7 +180,7 @@ async function loadFavoriteMechanics() {
     const isFavorite = favoriteIds.has(mechanicId);
     const heartClass = isFavorite ? "fa-solid fa-heart" : "fa-regular fa-heart";
 
-    // Create the card element
+    
     const card = document.createElement("div");
     card.classList.add("card");
 
@@ -205,15 +205,15 @@ async function loadFavoriteMechanics() {
       window.location.href = "mechanics.html";
     });
 
-    // Append the card to container
+    
     container.appendChild(card);
   });
 
-  // Reattach favorite listeners to the new cards
+  
   addFavoriteListeners();
 }
 
-// Load mechanics sorted by reviews (descending)
+
 async function loadMechanicsSortedByReviews() {
   const container = document.getElementById('mechanic-cards');
   container.innerHTML = '';
@@ -272,15 +272,15 @@ async function loadMechanicsSortedByReviews() {
       window.location.href = "mechanics.html";
     });
 
-    // Append the card to container
+    
     container.appendChild(card);
   });
 
-  // Reattach favorite listeners to the new cards
+  
   addFavoriteListeners();
 }
 
-// Load mechanics sorted by distance ascending
+
 async function loadMechanicsSortedByDistance() {
   const container = document.getElementById('mechanic-cards');
 
@@ -308,7 +308,7 @@ async function loadMechanicsSortedByDistance() {
     const isFavorite = favoriteIds.has(id);
     const heartClass = isFavorite ? "fa-solid fa-heart" : "fa-regular fa-heart";
 
-    // Create the card element
+    
     const card = document.createElement("div");
     card.classList.add("card");
 
@@ -326,7 +326,7 @@ async function loadMechanicsSortedByDistance() {
       </div>
     `;
 
-    // ✅ Click to go to detail (but ignore favorite button click)
+    
     card.addEventListener("click", (e) => {
       if (e.target.closest(".fav-btn")) return;
 
@@ -337,7 +337,7 @@ async function loadMechanicsSortedByDistance() {
     container.appendChild(card);
   });
 
-  // Reattach favorite listeners
+  
   addFavoriteListeners();
 }
 

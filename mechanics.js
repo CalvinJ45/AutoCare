@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelector(".fav-btn").setAttribute("data-id", mechanicId);
   const data = mechanicDoc.data();
 
-  // Populate main info
   document.getElementById("header-img").src = data.image;
   document.getElementById("mechanic-name").textContent = `${data.name},`;
   document.getElementById("mechanic-location").textContent = data.location;
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupReviewForm(mechanicId);
 });
 
-// Display Available Reviews
 async function loadReviews(mechanicId) {
   const reviewList = document.getElementById("review-list");
   const reviewRef = collection(db, "mechanics", mechanicId, "reviews");
@@ -51,7 +49,7 @@ async function loadReviews(mechanicId) {
   let total = 0;
   let count = 0;
 
-  reviewList.innerHTML = ""; // clear previous
+  reviewList.innerHTML = "";
   if (snapshot.empty) {
     reviewList.innerHTML = `<p class="no-review-text">No Reviews</p>`;
   } else {
@@ -93,7 +91,6 @@ async function loadReviews(mechanicId) {
       starDisplay.innerHTML = starsHtml;
 }
 
-// Review Form
 function setupReviewForm(mechanicId) {
   const form = document.getElementById("review-form");
   const textInput = document.getElementById("review-text");
@@ -101,7 +98,6 @@ function setupReviewForm(mechanicId) {
   let selectedRating = 0;
   const starEls = document.querySelectorAll("#star-rating i");
 
-  // Handle star clicks
   starEls.forEach(star => {
     star.addEventListener("click", () => {
       selectedRating = parseInt(star.dataset.value);
@@ -134,7 +130,6 @@ function setupReviewForm(mechanicId) {
       return;
     }
 
-    // Add new review
     await addDoc(collection(db, "mechanics", mechanicId, "reviews"), {
       name,
       rating,
@@ -142,7 +137,6 @@ function setupReviewForm(mechanicId) {
       timestamp: serverTimestamp()
     });
 
-    // Recalculate new average rating and count
     const reviewRef = collection(db, "mechanics", mechanicId, "reviews");
     const snapshot = await getDocs(reviewRef);
 
@@ -156,7 +150,6 @@ function setupReviewForm(mechanicId) {
 
     const avgRating = count ? total / count : 0;
 
-    // Update mechanic document
     const mechanicRef = doc(db, "mechanics", mechanicId);
     await updateDoc(mechanicRef, {
       review_count: count,

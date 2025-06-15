@@ -26,7 +26,7 @@ function toggleDropdown(selectedElement) {
     });
   });
 
-// Auto-Complete for Brand & Model
+
 const brandInput = document.getElementById("brandInput");
 const brandSuggestionBox = document.getElementById("autocomplete");
 const modelInput = document.getElementById("modelInput");
@@ -35,24 +35,24 @@ const modelSuggestionBox = document.getElementById("autocomplete2");
 let brandList = [];
 let modelList = {};
 
-// Load Brand and Model CSV (with linkage)
+
 fetch("dataset/car_model.csv")
   .then(response => response.text())
   .then(csv => {
     const parsed = Papa.parse(csv, { header: false }).data;
-    const firstColumn = parsed.map(row => row[0]).filter(Boolean);  // Brands
-    const secondColumn = parsed.map(row => row[1]).filter(Boolean); // Models
+    const firstColumn = parsed.map(row => row[0]).filter(Boolean);  
+    const secondColumn = parsed.map(row => row[1]).filter(Boolean); 
 
-    // Remove duplicates for brands
+    
     brandList = [...new Set(firstColumn.map(item => item.trim()))];
 
-    // Map models to brands
+    
     brandList.forEach((brand, index) => {
       modelList[brand] = secondColumn.filter((model, i) => firstColumn[i] === brand);
     });
   });
 
-// Show suggestions while typing (Brand)
+
 brandInput.addEventListener("input", () => {
   const query = brandInput.value.toLowerCase();
   brandSuggestionBox.innerHTML = "";
@@ -64,7 +64,7 @@ brandInput.addEventListener("input", () => {
 
   const matches = brandList.filter(item =>
     item.toLowerCase().startsWith(query)
-  ).slice(0, 5); // Limit suggestions to 5
+  ).slice(0, 5); 
 
   if (matches.length > 0) {
     matches.forEach(match => {
@@ -73,7 +73,7 @@ brandInput.addEventListener("input", () => {
       div.addEventListener("click", () => {
         brandInput.value = match;
         brandSuggestionBox.style.display = "none";
-        modelAutocomplete(match);  // Trigger model suggestions
+        modelAutocomplete(match);  
       });
       brandSuggestionBox.appendChild(div);
     });
@@ -83,7 +83,7 @@ brandInput.addEventListener("input", () => {
   }
 });
 
-// Show suggestions for models when brand is selected
+
 function modelAutocomplete(brand) {
   modelInput.disabled = false;
   modelInput.addEventListener("input", () => {
@@ -97,7 +97,7 @@ function modelAutocomplete(brand) {
 
     const matches = modelList[brand].filter(model =>
       model.toLowerCase().startsWith(query)
-    ).slice(0, 5); // Limit suggestions to 5
+    ).slice(0, 5); 
 
     if (matches.length > 0) {
       matches.forEach(match => {
@@ -116,20 +116,20 @@ function modelAutocomplete(brand) {
   });
 }
 
-// Auto-Complete for Type
+
 const typeInput = document.getElementById("typeInput");
 const typeSuggestionBox = document.getElementById("autocomplete3");
 let typeList = [];
 
-// Load car type data from CSV
+
 fetch("dataset/car_type.csv")
   .then(response => response.text())
   .then(csv => {
     const parsed = Papa.parse(csv, { header: false }).data;
     typeList = parsed.map(row => row[0]).filter(Boolean);
-    console.log("Type List loaded: ", typeList); // Debugging to check if typeList is correctly loaded
+    console.log("Type List loaded: ", typeList); 
   })
-  .catch(error => console.error("Error loading CSV:", error)); // Error handling
+  .catch(error => console.error("Error loading CSV:", error)); 
 
 typeInput.addEventListener("input", () => {
   const query = typeInput.value.toLowerCase();
@@ -142,7 +142,7 @@ typeInput.addEventListener("input", () => {
 
   const matches = typeList.filter(item =>
     item.toLowerCase().startsWith(query)
-  ).slice(0, 5); // Limit to 5 matches
+  ).slice(0, 5); 
 
   if (matches.length > 0) {
     matches.forEach(match => {
@@ -160,7 +160,7 @@ typeInput.addEventListener("input", () => {
   }
 });
 
-// Add Service History
+
 let serviceCount = 0;
 let serviceHistoryList = [];
 
@@ -170,7 +170,7 @@ function addService() {
   const month = document.getElementById('service-month').value;
   const year = document.getElementById('service-year').value;
 
-  // Get selected service type and center
+  
   const serviceType = document.querySelectorAll('.custom-dropdown')[0]
     .querySelector('.dropdown-selected span').textContent;
 
@@ -184,10 +184,10 @@ function addService() {
     timestamp: new Date()
   };
 
-  // Add to array (temporary)
+  
   serviceHistoryList.push(serviceEntry);
 
-  // Format the display text
+  
   const serviceText = `
     <div class="service-entry">
       <h3># Service ${serviceCount}</h3>
@@ -197,7 +197,7 @@ function addService() {
     </div>
   `;
 
-  // Append the result to the display div
+  
   const displayDiv = document.getElementById("serviceDisplay");
   displayDiv.innerHTML += serviceText;
 }

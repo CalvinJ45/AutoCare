@@ -5,7 +5,7 @@ import { auth, db } from "./firebase.js";
 const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", async (e) => {
-    e.preventDefault();  // Prevent default form submission
+    e.preventDefault();  
 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -15,24 +15,24 @@ form.addEventListener("submit", async (e) => {
         const querySnapshot = await getDocs(userQuery);
 
         if (querySnapshot.empty) {
-            throw new Error("Username not found"); // Perlu dibagusin
+            throw new Error("Username not found"); 
         }
 
         const userDoc = querySnapshot.docs[0];
         const email = userDoc.data().email;
         const userCred = await signInWithEmailAndPassword(auth, email, password);
 
-        // window.location.href = "main.html";
+        
 
-        // Step 3: Check if the user has registered vehicles by checking if collection exists
+        
         const vehiclesRef = collection(db, "users", userDoc.id, "vehicles");
         const vehicleSnapshot = await getDocs(vehiclesRef);
 
         if (vehicleSnapshot.empty) {
-            // No vehicles found → go to onboarding page
+            
             window.location.href = "boarding.html";
         } else {
-            // Vehicles found → go to main dashboard
+            
             window.location.href = "main.html";
         }
 
