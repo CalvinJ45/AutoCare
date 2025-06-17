@@ -107,8 +107,8 @@ body{
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
-  /* max-height: 3000px; */
-  /* overflow-y: auto; */
+ 
+ 
   position: relative;
 }
 .maintenance.hidden {
@@ -135,10 +135,10 @@ body{
 .carousel-container {
   width: 100%;
   position: relative;
-  height: 115px; /* Adjust as needed */
+  height: 115px;
   scroll-behavior: smooth;
   overflow: hidden;
-  /* scroll-snap-type: y mandatory; */
+ 
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -148,7 +148,7 @@ body{
   scroll-snap-align: start;
   background: var(--primary-blue-light);
   border-radius: 12px;
-  /* padding: 1rem 0; */
+ 
   min-height: 115px;
   display: flex;
   flex-direction: column;
@@ -345,7 +345,7 @@ body{
 .autocare-popup-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4); /* Dark translucent backdrop */
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 999;
   display: flex;
   justify-content: center;
@@ -356,14 +356,14 @@ body{
   display: none;
 }
 
-/* Labels */
+
 label {
   font-size: 16px;
   font-weight: 600;
   color: #333;
 }
 
-/* Inputs and select */
+
 input[type="date"],
 select {
   width: 100%;
@@ -380,7 +380,7 @@ input[type="checkbox"] {
   margin-right: 0.5rem;
 }
 
-/* Buttons */
+
 button {
   padding: 0.6rem 1.2rem;
   margin-right: 0.5rem;

@@ -159,8 +159,8 @@ body {
 }
   
 .social-icons img {
-    width: 30px; /* Adjust size of the logo */
-    height: auto; /* Maintain aspect ratio */
+    width: 30px;
+    height: auto;
 }
   
 .signup-text {

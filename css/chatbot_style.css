@@ -1,11 +1,11 @@
-/* General Reset */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body Styling */
+
 body {
   font-family: "Inter", sans-serif;
   background: white;
@@ -17,9 +17,9 @@ body {
   overflow: hidden;
 }
 
-/* Chat Container */
+
 .container {
-  position: relative; /* Required for absolute positioning of the close button */
+  position: relative;
   width: 100%;
   height: 100vh;
   background: white;
@@ -29,7 +29,7 @@ body {
   overflow: hidden;
 }
 
-/* Close Button */
+
 .close-btn {
   position: absolute;
   top: 10px;
@@ -45,7 +45,7 @@ body {
   color: #ff4d4d;
 }
 
-/* Chat Box */
+
 .chat-box {
   flex-grow: 1;
   padding: 10px;
@@ -57,7 +57,7 @@ body {
   display: none;
 }
 
-/* Message Styling */
+
 .message {
   margin: 30px 10px 10px 0;
   padding: 10px 15px;
@@ -84,7 +84,7 @@ body {
   border-bottom-left-radius: 5px;
 }
 
-/* Input Area */
+
 .input-area {
   display: flex;
   align-items: center;

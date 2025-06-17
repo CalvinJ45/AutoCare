@@ -4,7 +4,6 @@ body {
   background-color: #000;
 }
   
-  /* Onboarding screen */
 .boarding-screen {
   width: 430px;
   height: 932px;
@@ -21,7 +20,7 @@ body {
 .content {
   width: 370px;
   text-align: left;
-  margin-top: 10px; /* bigger gap from the top */
+  margin-top: 10px;
 }
   
 .welcome {
@@ -65,7 +64,6 @@ body {
   object-fit: contain;
 }
   
-/* Call to action block at the bottom */
 .cta-container {
   width: 90%;
   text-align: center;

@@ -214,7 +214,6 @@ button {
   font-size: 15px;
 }
 
-/* Custom Dropdown */
 .custom-dropdown {
   position: relative;
   width: 100%;
@@ -274,7 +273,6 @@ button {
   display: block;
 }
   
-/* Auto-Complete for Input*/
 .autocomplete {
   background: white;
   border: 1px solid #ccc;
@@ -299,7 +297,7 @@ button {
 
 .autocomplete {
   position: absolute;
-  top: 100%; /* puts it directly below the input */
+  top: 100%; 
   left: 0;
   width: 100%;
   background: white;
